@@ -78,7 +78,7 @@
     "winston": "^3.11.0",
     "markdownlint-cli": "^0.40.0",
     "spellchecker-cli": "^6.2.0",
-    "knip": "^5.8.0"
+    "knip": "^5.13.0"
   },
   "bin": {
     "run-benchmark": "bin/run-benchmark.js",
