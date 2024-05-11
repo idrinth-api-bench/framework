@@ -1,12 +1,12 @@
-import language from '../helper/language';
-import store from '../store';
-import Progress from '../progress/progress';
-import Job from '../job';
-import Logger from '../logger/logger';
-import Thread from '../worker/thread';
+import language from '../helper/language.js';
+import store from '../store/store.js';
+import Progress from '../progress/progress.js';
+import Job from '../routes/job.js';
+import Logger from '../logger/logger.js';
+import Thread from '../worker/thread.js';
 import {
   EMPTY,
-} from '../constants';
+} from '../constants.js';
 
 const onAfter = (
   progress: Progress,

@@ -1,5 +1,5 @@
-import Request from './request';
-import Result from './result';
+import Request from '../routes/request.js';
+import Result from '../messaging/result.js';
 
 export interface Middleware {
   process(response: Result): void;

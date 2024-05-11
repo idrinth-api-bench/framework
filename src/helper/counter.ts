@@ -1,7 +1,7 @@
 import {
   COUNTER_STEP,
   EMPTY,
-} from './constants';
+} from '../constants.js';
 
 const counter = {};
 

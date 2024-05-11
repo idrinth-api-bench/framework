@@ -11,7 +11,7 @@ import {
 } from 'child_process';
 import url from 'url';
 import NoProgress from '../src/progress/no-progress';
-import Counter from '../src/counter';
+import Counter from '../src/helper/counter';
 import simpleMultiReporter from './simple-multi-reporter';
 import {
   TEMP_DIR,

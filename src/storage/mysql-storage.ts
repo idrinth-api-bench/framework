@@ -1,5 +1,5 @@
-import Storage from './storage';
-import FinishedSet from '../finished-set';
+import Storage from './storage.js';
+import FinishedSet from '../messaging/finished-set.js';
 import {
   createConnection,
   Connection,
@@ -8,7 +8,7 @@ import reqlib from 'app-root-path';
 import {
   MONTH_OFFSET,
   TEN,
-} from '../constants';
+} from '../constants.js';
 
 const project: string = reqlib
   .require('/package-lock.json',)

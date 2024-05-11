@@ -1,8 +1,7 @@
-import Middleware from '../middleware';
-import Request from '../request';
+import Middleware from './middleware.js';
+import Request from '../routes/request.js';
 import formUrlEncoded from 'form-urlencoded';
-import Result from '../result';
-import staticImplements from '../helper/static-implements';
+import Result from '../messaging/result.js';
 
 const handleForm = (request: Request,): Request => {
   if (! request.headers['content-type']) {
@@ -18,9 +17,9 @@ const handleJSON = (request: Request,): Request => {
   }
   return request;
 };
-@staticImplements<Middleware>()
-class Encoding {
-  public static prepare(request: Request,): Request {
+
+class Encoding implements Middleware {
+  public prepare(request: Request,): Request {
     if (typeof request.headers === 'undefined') {
       request.headers = {};
     }
@@ -33,7 +32,7 @@ class Encoding {
     return request;
   }
 
-  public static process(response: Result,): void {
+  public process(response: Result,): void {
     //no task here
   }
 }

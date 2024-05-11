@@ -1,12 +1,12 @@
-import Hashmap from '../../hashmap';
+import Hashmap from '../helper/hashmap.js';
 import {
   DEFAULT_REPETITIONS,
   DEFAULT_THREADS,
   FIRST_ARGUMENT,
-} from '../../constants';
-import Config from './config';
-import fromEnv from './from-env';
-import fromCli from './from-cli';
+} from '../constants.js';
+import Config from './config.js';
+import fromEnv from './from-env.js';
+import fromCli from './from-cli.js';
 
 export default (cwd: string, args: string[], env: Hashmap,) => {
   const config: Config = {

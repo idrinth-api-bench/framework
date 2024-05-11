@@ -1,4 +1,4 @@
-import Job from '../job';
+import Job from '../routes/job.js';
 
 interface Progress {
     start(job: Job, repetitions: number, threads: number): void;

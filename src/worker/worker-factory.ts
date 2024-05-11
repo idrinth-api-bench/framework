@@ -1,11 +1,11 @@
 import {
   realpathSync,
 } from 'fs';
-import Thread from './thread';
-import WorkerConstructor from './worker-constructor';
+import Thread from './thread.js';
+import WorkerConstructor from './worker-constructor.js';
 import {
   FRAMEWORK_ROOT,
-} from '../constants';
+} from '../constants.js';
 
 const buildWorker = (
   Worker: WorkerConstructor,

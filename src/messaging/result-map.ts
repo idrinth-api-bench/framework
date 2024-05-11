@@ -1,4 +1,4 @@
-import ResultSet from './result-set';
+import ResultSet from './result-set.js';
 
 interface ResultMap {
   [id: string]: ResultSet,

@@ -1,11 +1,11 @@
-import language from '../helper/language';
-import Progress from '../progress/progress';
-import Job from '../job';
-import Logger from '../logger/logger';
-import Thread from '../worker/thread';
+import language from '../helper/language.js';
+import Progress from '../progress/progress.js';
+import Job from '../routes/job.js';
+import Logger from '../logger/logger.js';
+import Thread from '../worker/thread.js';
 import {
   EMPTY,
-} from '../constants';
+} from '../constants.js';
 
 const onBefore = (
   progress: Progress,

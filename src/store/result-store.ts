@@ -12,7 +12,7 @@ import {
 import {
   FRAMEWORK_ROOT,
   TEMP_DIR,
-} from './constants';
+} from '../constants.js';
 
 const hash = createHash('sha256',)
   .update(FRAMEWORK_ROOT,)

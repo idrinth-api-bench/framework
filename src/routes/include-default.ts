@@ -1,8 +1,8 @@
-import analyze from './function-analyzer';
+import analyze from './function-analyzer.js';
 import isCallable from 'is-callable';
 import {
   INCLUDE_EXTENSION,
-} from '../constants';
+} from '../constants.js';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const include = async(path: string,): Promise<any> => {

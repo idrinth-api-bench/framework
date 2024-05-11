@@ -1,12 +1,10 @@
-import Middleware from '../middleware';
-import Request from '../request';
-import Result from '../result';
-import staticImplements from '../helper/static-implements';
-import store from '../store';
+import Middleware from './middleware.js';
+import Request from '../routes/request.js';
+import Result from '../messaging/result.js';
+import store from '../store/store.js';
 
-@staticImplements<Middleware>()
-class Cookie {
-  public static prepare(request: Request,): Request {
+class Cookie implements Middleware {
+  public prepare(request: Request,): Request {
     if (typeof request.cookies === 'undefined') {
       request.cookies = {};
     }
@@ -19,7 +17,7 @@ class Cookie {
     return request;
   }
 
-  public static process(response: Result,): void {
+  public process(response: Result,): void {
     if (typeof response.response.cookies === 'undefined') {
       return;
     }

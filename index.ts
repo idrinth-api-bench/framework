@@ -1,65 +1,65 @@
 import {
   Reporter as R,
-} from './src/reporter/reporter';
+} from './src/reporter/reporter.js';
 import {
   CliReporter as CliR,
-} from './src/reporter/console-reporter';
+} from './src/reporter/console-reporter.js';
 import {
   CsvReporter as CsvR,
-} from './src/reporter/csv-reporter';
+} from './src/reporter/csv-reporter.js';
 import {
   HtmlReporter as HR,
-} from './src/reporter/html-reporter';
+} from './src/reporter/html-reporter.js';
 import {
   JsonReporter as JR,
-} from './src/reporter/json-reporter';
+} from './src/reporter/json-reporter.js';
 import {
   MultiReporter as MR,
-} from './src/reporter/multi-reporter';
+} from './src/reporter/multi-reporter.js';
 import {
   Wrapper as LW,
-} from './src/logger/wrapper';
+} from './src/logger/wrapper.js';
 import {
   WinstonWrapper as WLW,
-} from './src/logger/winston-wrapper';
+} from './src/logger/winston-wrapper.js';
 import {
   PinoWrapper as PLW,
-} from './src/logger/pino-wrapper';
+} from './src/logger/pino-wrapper.js';
 import {
   Logger as L,
-} from './src/logger/logger';
+} from './src/logger/logger.js';
 import {
   DurationFloatsToInts as DFTIRM,
-} from './src/report-modifier/duration-floats-to-ints';
+} from './src/report-modifier/duration-floats-to-ints.js';
 import {
   DurationsTimeScaleReduction as DTSRRM,
-} from './src/report-modifier/durations-time-scale-reduction';
+} from './src/report-modifier/durations-time-scale-reduction.js';
 import {
   ReportModifier as RM,
-} from './src/report-modifier/report-modifier';
+} from './src/report-modifier/report-modifier.js';
 import {
   Storage as S,
-} from './src/storage/storage';
+} from './src/storage/storage.js';
 import {
   MysqlStorage as MYSQLS,
-} from './src/storage/mysql-storage';
+} from './src/storage/mysql-storage.js';
 import {
   MssqlStorage as MSSQLS,
-} from './src/storage/mssql-storage';
+} from './src/storage/mssql-storage.js';
 import {
   PostgresStorage as PGSQL,
-} from './src/storage/postgres-storage';
+} from './src/storage/postgres-storage.js';
 import {
   Job as J,
-} from './src/job';
+} from './src/routes/job.js';
 import {
   Task as T,
-} from './src/task';
+} from './src/routes/task.js';
 import {
   run as r,
-} from './src/main';
-import rS from './src/result-store';
-import iR from './src/reporter/internal-reporter';
+} from './src/main.js';
+import rS from './src/store/result-store.js';
+import iR from './src/reporter/internal-reporter.js';
 
 export type Reporter = R;
 export const CliReporter = CliR;

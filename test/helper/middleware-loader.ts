@@ -1,4 +1,4 @@
-import loader from '../../src/helper/middleware-loader';
+import loader from '../../src/routes/middleware-loader';
 import {
   expect,
 } from 'chai';

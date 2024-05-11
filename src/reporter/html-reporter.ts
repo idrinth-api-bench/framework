@@ -1,8 +1,8 @@
-import Reporter from './reporter';
+import Reporter from './reporter.js';
 import {
   createWriteStream,
 } from 'fs';
-import FinishedRun from '../finished-run';
+import FinishedRun from '../messaging/finished-run.js';
 
 const html: Reporter = (
   results: FinishedRun,

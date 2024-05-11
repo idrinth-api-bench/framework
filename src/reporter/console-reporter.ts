@@ -1,10 +1,10 @@
-import Reporter from './reporter';
+import Reporter from './reporter.js';
 import Table from 'cli-table3';
-import FinishedRun from '../finished-run';
+import FinishedRun from '../messaging/finished-run.js';
 import logSymbols from 'log-symbols';
 import {
   EMPTY,
-} from '../constants';
+} from '../constants.js';
 
 const cli: Reporter = (
   results: FinishedRun,

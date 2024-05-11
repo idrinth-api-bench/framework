@@ -1,12 +1,12 @@
-import ResultSet from '../result-set';
-import FinishedSet from '../finished-set';
+import ResultSet from '../messaging/result-set.js';
+import FinishedSet from '../messaging/finished-set.js';
 import {
   ARRAY_LENGTH_OFFSET,
   EMPTY,
   FIRST,
   PERCENT10,
   PERCENT90,
-} from '../constants';
+} from '../constants.js';
 
 const calculateAverage = (
   ...inputs: Array<number>

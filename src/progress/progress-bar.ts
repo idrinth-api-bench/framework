@@ -1,12 +1,12 @@
 import {
   SingleBar,
 } from 'cli-progress';
-import Job from '../job';
-import Progress from './progress';
+import Job from '../routes/job.js';
+import Progress from './progress.js';
 import {
   EMPTY,
   SINGLE,
-} from '../constants';
+} from '../constants.js';
 
 class ProgressBar implements Progress {
   private bar: SingleBar;

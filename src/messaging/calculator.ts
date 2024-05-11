@@ -1,13 +1,13 @@
-import FinishedSet from '../finished-set';
-import language from '../helper/language';
-import FinishedRun from '../finished-run';
-import Storage from '../storage/storage';
-import Logger from '../logger/logger';
-import Progress from '../progress/progress';
-import Thread from '../worker/thread';
-import Counter from '../counter';
-import ReportModifier from '../report-modifier/report-modifier';
-import Reporter from '../reporter/reporter';
+import FinishedSet from './finished-set.js';
+import language from '../helper/language.js';
+import FinishedRun from './finished-run.js';
+import Storage from '../storage/storage.js';
+import Logger from '../logger/logger.js';
+import Progress from '../progress/progress.js';
+import Thread from '../worker/thread.js';
+import Counter from '../helper/counter.js';
+import ReportModifier from '../report-modifier/report-modifier.js';
+import Reporter from '../reporter/reporter.js';
 
 const startResults = (
   logger: Logger,

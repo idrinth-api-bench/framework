@@ -1,4 +1,4 @@
-import Counter from '../src/counter';
+import Counter from '../src/helper/counter';
 import {
   expect,
 } from 'chai';

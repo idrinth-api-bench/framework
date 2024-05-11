@@ -1,28 +1,28 @@
-import Task from './task';
-import Logger from './logger/logger';
-import NullLogger from './logger/null-logger';
-import Reporter from './reporter/reporter';
-import defaultReporter from './helper/default-reporter';
-import executor from './executor';
+import Task from './routes/task.js';
+import Logger from './logger/logger.js';
+import NullLogger from './logger/null-logger.js';
+import Reporter from './reporter/reporter.js';
+import defaultReporter from './reporter/default-reporter.js';
+import executor from './executor.js';
 import {
   Worker,
 } from 'worker_threads';
-import Job from './job';
-import jobCreator from './helper/job-creator';
-import ReportModifier from './report-modifier/report-modifier';
-import Storage from './storage/storage';
-import NoopStorage from './storage/noop-storage';
-import Progress from './progress/progress';
-import ProgressBar from './progress/progress-bar';
+import Job from './routes/job.js';
+import jobCreator from './routes/job-creator.js';
+import ReportModifier from './report-modifier/report-modifier.js';
+import Storage from './storage/storage.js';
+import NoopStorage from './storage/noop-storage.js';
+import Progress from './progress/progress.js';
+import ProgressBar from './progress/progress-bar.js';
 import {
   locale,
-} from './helper/language';
+} from './helper/language.js';
 import {
   DEFAULT_LANGUAGE,
   DEFAULT_REPETITIONS,
   DEFAULT_THREADS,
-} from './constants';
-import blacklist from './blacklist';
+} from './constants.js';
+import blacklist from './routes/blacklist.js';
 
 // eslint-disable-next-line complexity
 export const run = async(

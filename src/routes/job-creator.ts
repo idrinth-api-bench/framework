@@ -1,13 +1,13 @@
-import Job from '../job';
+import Job from './job.js';
 import {
   readdirSync, existsSync,
 } from 'fs';
 import {
   snakeCase,
 } from 'change-case';
-import Task from '../task';
-import include from './include-default';
-import taskTypes from '../task-types';
+import Task from './task.js';
+import include from './include-default.js';
+import taskTypes from './task-types.js';
 
 export default async(root: string,): Promise<Job> => {
   const job:Job = {

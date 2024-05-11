@@ -6,7 +6,7 @@ import 'mocha';
 import {
   NeedleHttpVerbs,
 } from 'needle';
-import Result from '../../src/result';
+import Result from '../../src/messaging/result';
 
 describe('middlewares/silent-server-validator', () => {
   it('should be a class', () => {

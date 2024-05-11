@@ -3,9 +3,9 @@ import {
   FIRST,
   SECOND,
   TWO,
-} from '../../constants';
-import Config from './config';
-import toValue from './to-value';
+} from '../constants.js';
+import Config from './config.js';
+import toValue from './to-value.js';
 
 export default (config: Config, args: string[],) => {
   const options = args.filter(

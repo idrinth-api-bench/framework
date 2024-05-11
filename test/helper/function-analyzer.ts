@@ -1,6 +1,6 @@
 import {
   analyze,
-} from '../../src/helper/function-analyzer';
+} from '../../src/routes/function-analyzer';
 import {
   expect,
 } from 'chai';

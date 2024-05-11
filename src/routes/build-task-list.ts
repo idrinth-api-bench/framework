@@ -1,4 +1,4 @@
-import Task from './task';
+import Task from './task.js';
 
 export default (tasks: Task[], blacklist: string[], total: number,) => {
   const internalTasks = [];

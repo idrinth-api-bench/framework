@@ -3,14 +3,14 @@ import {
   STATUSCODE_SUCCESS,
   STATUSCODE_FAILURE,
   ONE,
-} from '../constants';
-import resultStore from '../result-store';
-import run from '../main';
+} from '../constants.js';
+import resultStore from '../store/result-store.js';
+import run from '../main.js';
 import pkg from '../../package.json' with {
   type: 'json',
 };
-import configFactory from './config/config-factory';
-import storageFactory from '../storage/storage-factory';
+import configFactory from '../config/config-factory.js';
+import storageFactory from '../storage/storage-factory.js';
 
 // eslint-disable-next-line complexity
 export default async(args: string[], cwd: string,): Promise<number> => {

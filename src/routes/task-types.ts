@@ -1,4 +1,4 @@
-import taskType from './task-type';
+import taskType from './task-type.js';
 
 const taskTypes: taskType[] = [
   'before',

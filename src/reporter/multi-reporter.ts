@@ -1,6 +1,6 @@
-import Reporter from './reporter';
-import FinishedRun from '../finished-run';
-import MultiReporterType from './multi-reporter-type';
+import Reporter from './reporter.js';
+import FinishedRun from '../messaging/finished-run.js';
+import MultiReporterType from './multi-reporter-type.js';
 
 const reporters: Array<Reporter> = [];
 

@@ -1,11 +1,11 @@
 import {
   format,
 } from '@fast-csv/format';
-import Reporter from './reporter';
+import Reporter from './reporter.js';
 import {
   createWriteStream,
 } from 'fs';
-import FinishedRun from '../finished-run';
+import FinishedRun from '../messaging/finished-run.js';
 
 const csv: Reporter = (
   results: FinishedRun,

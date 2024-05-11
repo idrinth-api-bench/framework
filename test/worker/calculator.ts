@@ -4,7 +4,7 @@ import {
   expect,
 } from 'chai';
 import 'mocha';
-import ValidationResult from '../../src/validation-result';
+import ValidationResult from '../../src/messaging/validation-result';
 
 describe('worker/calculator', () => {
   it('should be a function', () => {

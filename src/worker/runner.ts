@@ -1,10 +1,10 @@
-import Result from '../result';
+import Result from '../messaging/result.js';
 import {
   request,
 } from 'needle';
-import Task from '../task';
-import Middleware from '../middleware';
-import load from '../helper/middleware-loader';
+import Task from '../routes/task.js';
+import Middleware from '../middlewares/middleware.js';
+import load from '../routes/middleware-loader.js';
 
 interface Answer {
   duration: number;

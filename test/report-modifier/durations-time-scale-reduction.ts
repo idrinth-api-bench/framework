@@ -4,7 +4,7 @@ import {
 import DurationTimeScaleReduction
   from '../../src/report-modifier/durations-time-scale-reduction';
 import 'mocha';
-import FinishedSet from '../../src/finished-set';
+import FinishedSet from '../../src/messaging/finished-set';
 
 describe('report-modifier/duration-floats-to-ints', () => {
   it('be a class', () => {
