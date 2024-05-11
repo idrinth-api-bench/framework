@@ -1,4 +1,4 @@
-/node_modules
-/coverage
 /.idea
+/node_modules
 /src/locales
+/coverage
