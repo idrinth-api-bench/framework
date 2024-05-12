@@ -86,7 +86,7 @@ let maxScore = 0;
 let maxAfter = 0;
 
 for (const file of output) {
-    file.name = `${ process.argv[FIRST_ARGUMENT] }/${ file.file_name }`;
+    file.name = `/${ file.file_name }`;
     maxLength = maxLength > file.name.length ? maxLength : file.name.length;
     maxScore = maxScore > `${ file.fta_score }`.split('.',).shift().length
         ? maxScore

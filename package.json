@@ -79,7 +79,8 @@
     "markdownlint-cli": "^0.40.0",
     "spellchecker-cli": "^6.2.0",
     "knip": "^5.13.0",
-    "fta-cli": "^2.0.0"
+    "fta-cli": "^2.0.0",
+    "simple-git-hooks": "^2.11.1"
   },
   "bin": {
     "iab": "bin/iab.js"
@@ -100,8 +101,10 @@
     "spellcheck": "itlfy dump && spellchecker",
     "knip": "knip --exclude duplicates --exclude exports --exclude types",
     "commitlint": "commitlint --edit",
-    "commitlint-ci": "commitlint --from latest",
-    "fta": "node tools/fta.js"
+    "commitlint-ci": "commitlint --last",
+    "fta": "node tools/fta.js",
+    "postinstall": "npm run simple-git-hooks",
+    "simple-git-hooks": "simple-git-hooks"
   },
   "engines": {
     "node": ">=20"
