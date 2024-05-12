@@ -7,7 +7,6 @@ on:
       - opened
       - edited
       - reopened
-
 jobs:
   linting:
     runs-on: ubuntu-latest
