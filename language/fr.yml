@@ -1,0 +1,44 @@
+no_tasks: Impossible de mesurer. Aucune tâche.
+duplicate_task_id: L'id %1% est partagé.
+invalid_key: La clé %1% est invalide.
+finished_analyzing: Analyse de %1% terminée.
+initialization: Analyse des tâches pour obtenir %1% Fils d\’exécution x %2% Rappels de répétition
+starting_result: Démarrage du gestionnaire de résultats défini.
+data: Données
+done: Terminé
+starting_workers: Démarrage de %1% Travailleurs.
+starting_after: Démarrage après requête.
+no_after: Pas d'autres requêtes, terminé.
+finished_requests: Toutes les requêtes sont terminées %1%.
+starting_analyzation: Démarrage de l'analyse de %1%.
+next_request: Démarrage de la prochaine requête.
+starting_validation: Démarrage de la validation de %1%.
+end_thread: Toutes les requêtes sont terminées, fin du fil d\’exécution.
+after_done: Après avoir terminé.
+no_response_status: La requête n\’a retourné aucun statut
+response_status_above_2xx: La requête a retourné un statut au-dessus l'intervalle 200-299
+response_status_below_2xx: La requête a retourné un statut au-dessous de l'intervalle 200-299
+response_status_not_404: La requête a retourné un statut %1%, non 404
+response_status_not_403: La requête a retourné un statut %1%, non 403
+variable_default_value: Impossible d'obtenir la valeur par défaut de la variable sur %1%.
+no_content_type: L'entête de contenu est manquant.
+no_json_content_type: L'entête de contenu n'est pas application/json.
+invalid_json_body: Le corps JSON est invalide. %1%
+no_xml_content_type: Le type de contenu application/jason n'est pas */xml.
+invalid_xml_body: Le corps XML n'est pas valide.
+too_slow: Le temps de réponse était au-dessus de %1% ns.
+maximum_below_threads: Le maximum est plus bas que le compte de fil d\’exécution initial.
+increment_below_one: Vous devez incrémenter vos fils d\’exécution à chaque itération, présentement, l'incrément est plus petit que un.
+maximum_below_one: Vous ne pouvez pas définir le maximum en bas de un.
+server_header_is_set: L'entête du serveur est défini. Enlevez celui-ci pour améliorer la sécurité.
+powered_by_is_set: L'entête X-Powered-By est défini. Il partage des informations critiques avec le monde.
+validation_errors: %1% erreurs rencontrées.
+validation_warnings: %1% avertissements rencontrés.
+invalid_pre_definition: La pré-définition sur la route %1% n'est pas valide.
+invalid_post_definition: La post-définition sur la route %1% n'est pas valide.
+unknown_route_property: La propriété %1% sur la route %1% est inconnue.
+invalid_request_property: La propriété de la requête %2% de la tâche %1% est invalide.
+invalid_request: La tâche de la requête %1% a des propriétés inconnues.
+response_not_success: La réponse n'était pas succès, le champ %1% était %2
+response_not_failure: La réponse n'était pas échec, le champ %1% était %2%
+no_errors_warnings: Aucune erreurs ou avertissements trouvés.
