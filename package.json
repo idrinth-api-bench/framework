@@ -55,6 +55,7 @@
     "postgres": "^3.4.4"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.2.1",
     "@databases/mysql-test": "^4.0.2",
     "@types/app-root-path": "^1.2.8",
     "@types/chai": "^4.3.11",
@@ -100,7 +101,9 @@
     "language": "itlfy generate",
     "check-language": "itlfy check",
     "spellcheck": "itlfy dump && spellchecker",
-    "knip": "knip --exclude duplicates --exclude exports --exclude types"
+    "knip": "knip --exclude duplicates --exclude exports --exclude types",
+    "commitlint": "commitlint --edit",
+    "commitlint-ci": "commitlint --latest"
   },
   "engines": {
     "node": ">=20"

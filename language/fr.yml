@@ -32,8 +32,8 @@ increment_below_one: Vous devez incrémenter vos fils d\’exécution à chaque 
 maximum_below_one: Vous ne pouvez pas définir le maximum en bas de un.
 server_header_is_set: L'entête du serveur est défini. Enlevez celui-ci pour améliorer la sécurité.
 powered_by_is_set: L'entête X-Powered-By est défini. Il partage des informations critiques avec le monde.
-validation_errors: %1% erreurs rencontrées.
-validation_warnings: %1% avertissements rencontrés.
+validation_errors: "%1% erreurs rencontrées."
+validation_warnings: "%1% avertissements rencontrés."
 invalid_pre_definition: La pré-définition sur la route %1% n'est pas valide.
 invalid_post_definition: La post-définition sur la route %1% n'est pas valide.
 unknown_route_property: La propriété %1% sur la route %1% est inconnue.
