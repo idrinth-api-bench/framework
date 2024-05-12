@@ -3,5 +3,6 @@ const languages = [
   'de',
   'en',
   'es',
+  'fr',
 ];
 export default languages;
