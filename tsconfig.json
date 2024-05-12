@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "experimentalDecorators": true,
-    "module": "NodeNext",
+    "module": "ESNext",
     "lib": [],
     "target": "ESNext",
     "esModuleInterop": true,
