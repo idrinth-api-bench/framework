@@ -32,4 +32,4 @@ jobs:
             package-lock.json
       - run: npm ci
       - run: npm run language
-      - run: npm run ftas
+      - run: npm run fta

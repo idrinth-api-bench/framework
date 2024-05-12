@@ -78,13 +78,10 @@
     "winston": "^3.11.0",
     "markdownlint-cli": "^0.40.0",
     "spellchecker-cli": "^6.2.0",
-    "knip": "^5.13.0"
+    "knip": "^5.13.0",
+    "fta-cli": "^2.0.0"
   },
   "bin": {
-    "check-route-definitions": "bin/check-route-definitions.js",
-    "run-loadtest": "bin/run-loadtest.js",
-    "iabl": "bin/run-loadtest.js",
-    "iabcrd": "bin/check-route-definitions.js",
     "iab": "bin/iab.js"
   },
   "scripts": {
@@ -103,7 +100,8 @@
     "spellcheck": "itlfy dump && spellchecker",
     "knip": "knip --exclude duplicates --exclude exports --exclude types",
     "commitlint": "commitlint --edit",
-    "commitlint-ci": "commitlint --latest"
+    "commitlint-ci": "commitlint --from latest",
+    "fta": "node tools/fta.js"
   },
   "engines": {
     "node": ">=20"
