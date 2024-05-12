@@ -3,9 +3,9 @@ import {
   expect,
 } from 'chai';
 import 'mocha';
-import Request from '../../src/request';
-import Result from '../../src/result';
-import store from '../../src/store';
+import Request from '../../src/routes/request';
+import Result from '../../src/messaging/result';
+import store from '../../src/store/store';
 
 describe('middlewares/csrf-header', () => {
   before(store.clean,);

@@ -1,6 +1,6 @@
 import {
   BASE_10_RADIX,
-} from '../../constants';
+} from '../constants.js';
 
 const IS_NUMERIC = /^\d+$/u;
 

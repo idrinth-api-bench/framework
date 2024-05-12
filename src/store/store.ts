@@ -11,11 +11,11 @@ import {
 import {
   sep,
 } from 'path';
-import language from './helper/language';
+import language from '../helper/language.js';
 import {
   FRAMEWORK_ROOT,
   TEMP_DIR,
-} from './constants';
+} from '../constants.js';
 
 const hash = createHash('sha256',)
   .update(FRAMEWORK_ROOT,)

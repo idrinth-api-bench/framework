@@ -4,8 +4,8 @@ import {
   expect,
 } from 'chai';
 import 'mocha';
-import StandardResponse from '../../src/standard-response';
-import Result from '../../src/result';
+import StandardResponse from '../../src/helper/standard-response';
+import Result from '../../src/messaging/result';
 
 describe('middlewares/success-check', () => {
   it('should be a class', () => {

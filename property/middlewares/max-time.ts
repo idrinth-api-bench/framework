@@ -3,7 +3,7 @@ import {
   expect,
 } from 'chai';
 import 'mocha';
-import Result from '../../src/result';
+import Result from '../../src/messaging/result';
 import fc from 'fast-check';
 
 describe('middlewares/max-time', () => {

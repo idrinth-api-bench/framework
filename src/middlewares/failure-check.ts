@@ -1,34 +1,15 @@
-import staticImplements from '../helper/static-implements';
-import Middleware from '../middleware';
-import Result from '../result';
-import language from '../helper/language';
-import StandardResponse from '../standard-response';
+import Middleware from './middleware.js';
+import Result from '../messaging/result.js';
+import language from '../helper/language.js';
+import StandardResponse from '../helper/standard-response.js';
+import Request from '../routes/request.js';
 
-/*
-Below Document Defines the standards upon which most apis will be constructed
-for failure scenarios:
-
-1) JSEND - https://github.com/omniti-labs/jsend
-{
-  "status": "fail/error",
-  "message":"Present only when status is error"
-}
-
-2) Another Common Format
-{
-  "success": false,
-  "message": "Used mostly in case of error message,
-  "error_code": 1308,
-}
-*/
-
-@staticImplements<Middleware>()
-export default class FailureCheck {
-  public static prepare(request: Request,): Request {
+export default class FailureCheck implements Middleware {
+  public prepare(request: Request,): Request {
     return request;
   }
 
-  public static process(result: Result,): void {
+  public process(result: Result,): void {
     let response: StandardResponse;
     try {
       response = JSON.parse(result.response.body,);

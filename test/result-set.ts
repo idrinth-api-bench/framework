@@ -1,5 +1,5 @@
 /* eslint no-magic-numbers:0 */
-import ResultSet from '../src/result-set';
+import ResultSet from '../src/messaging/result-set';
 import {
   expect,
 } from 'chai';

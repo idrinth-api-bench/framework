@@ -1,22 +1,22 @@
 /* eslint no-console: 0 */
-import jobCreator from '../helper/job-creator';
+import jobCreator from '../routes/job-creator.js';
 import language, {
   locale,
-} from '../helper/language';
+} from '../helper/language.js';
 import {
   DEFAULT_LANGUAGE,
   ONE,
   EMPTY,
   FIRST_ARGUMENT,
-} from '../constants';
-import validateTasks from '../validate-tasks';
-import taskTypes from '../task-types';
-import Task from '../task';
-import Job from '../job';
-import taskType from '../task-type';
-import Request from '../request';
+} from '../constants.js';
+import validateTasks from '../routes/validate-tasks.js';
+import taskTypes from '../routes/task-types.js';
+import Task from '../routes/task.js';
+import Job from '../routes/job.js';
+import taskType from '../routes/task-type.js';
+import Request from '../routes/request.js';
 import logSymbols from 'log-symbols';
-import languageKey from '../locales/language-key';
+import languageKey from '../locales/language-key.js';
 
 const warn = (key: languageKey, ...argList: string[]) => {
   console.warn(logSymbols.warning + ' ' + language(key, ...argList,),);

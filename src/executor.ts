@@ -1,27 +1,27 @@
-import FinishedSet from './finished-set';
-import ResultSet from './result-set';
-import ValidationResult from './validation-result';
-import Logger from './logger/logger';
-import Reporter from './reporter/reporter';
-import validateTasks from './validate-tasks';
-import Job from './job';
-import ReportModifier from './report-modifier/report-modifier';
-import Storage from './storage/storage';
-import Progress from './progress/progress';
-import language from './helper/language';
-import onBefore from './messaging/before';
-import onAfter from './messaging/after';
-import onWorker from './messaging/worker';
-import onCalculate from './messaging/calculator';
-import Counter from './counter';
-import WorkerConstructor from './worker/worker-constructor';
-import buildWorker from './worker/worker-factory';
-import Thread from './worker/thread';
+import FinishedSet from './messaging/finished-set.js';
+import ResultSet from './messaging/result-set.js';
+import ValidationResult from './messaging/validation-result.js';
+import Logger from './logger/logger.js';
+import Reporter from './reporter/reporter.js';
+import validateTasks from './routes/validate-tasks.js';
+import Job from './routes/job.js';
+import ReportModifier from './report-modifier/report-modifier.js';
+import Storage from './storage/storage.js';
+import Progress from './progress/progress.js';
+import language from './helper/language.js';
+import onBefore from './messaging/before.js';
+import onAfter from './messaging/after.js';
+import onWorker from './messaging/worker.js';
+import onCalculate from './messaging/calculator.js';
+import Counter from './helper/counter.js';
+import WorkerConstructor from './worker/worker-constructor.js';
+import buildWorker from './worker/worker-factory.js';
+import Thread from './worker/thread.js';
 import {
   EMPTY,
-} from './constants';
-import Task from './task';
-import buildTaskList from './build-task-list';
+} from './constants.js';
+import Task from './routes/task.js';
+import buildTaskList from './routes/build-task-list.js';
 
 /* eslint max-params:0 */
 const executor = (

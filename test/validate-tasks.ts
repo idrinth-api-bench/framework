@@ -2,8 +2,8 @@ import 'mocha';
 import {
   expect,
 } from 'chai';
-import validateTasks from '../src/validate-tasks';
-import Task from '../src/task';
+import validateTasks from '../src/routes/validate-tasks';
+import Task from '../src/routes/task';
 
 describe('validateTasks', () => {
   it('should be a function', () => {

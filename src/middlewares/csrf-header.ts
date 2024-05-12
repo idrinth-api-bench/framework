@@ -1,12 +1,10 @@
-import Middleware from '../middleware';
-import Request from '../request';
-import Result from '../result';
-import staticImplements from '../helper/static-implements';
-import store from '../store';
+import Middleware from './middleware.js';
+import Request from '../routes/request.js';
+import Result from '../messaging/result.js';
+import store from '../store/store.js';
 
-@staticImplements<Middleware>()
-class CsrfHeader {
-  public static prepare(request: Request,): Request {
+class CsrfHeader implements Middleware {
+  public prepare(request: Request,): Request {
     const csrf = store.get('csrf', '',);
     if (csrf) {
       if (typeof request.headers === 'undefined') {
@@ -19,7 +17,7 @@ class CsrfHeader {
     return request;
   }
 
-  public static process(response: Result,): void {
+  public process(response: Result,): void {
     if (typeof response.response.headers === 'undefined') {
       return;
     }

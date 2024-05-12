@@ -1,7 +1,7 @@
-import ValidationResult from './validation-result';
+import ValidationResult from './validation-result.js';
 import {
   INITIAL_ZERO,
-} from './constants';
+} from '../constants.js';
 
 export class ResultSet {
   public errors: number;

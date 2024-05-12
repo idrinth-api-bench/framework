@@ -7,7 +7,7 @@ import {
   spawn,
 } from 'child_process';
 import url from 'url';
-import Counter from '../src/counter';
+import Counter from '../src/helper/counter';
 import {
   STATUSCODE_FAILURE,
 } from '../src/constants';

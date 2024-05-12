@@ -1,12 +1,10 @@
-import Middleware from '../middleware';
-import Result from '../result';
-import Request from '../request';
-import agent from '../helper/user-agent';
-import staticImplements from '../helper/static-implements';
+import Middleware from './middleware.js';
+import Result from '../messaging/result.js';
+import Request from '../routes/request.js';
+import agent from '../helper/user-agent.js';
 
-@staticImplements<Middleware>()
-class UserAgent {
-  public static prepare(request: Request,): Request {
+export default class UserAgent implements Middleware {
+  public prepare(request: Request,): Request {
     if (typeof request.headers === 'undefined') {
       request.headers = {};
     }
@@ -16,8 +14,7 @@ class UserAgent {
     return request;
   }
 
-  public static process(response: Result,): void {
+  public process(response: Result,): void {
     // noop
   }
 }
-export default UserAgent;

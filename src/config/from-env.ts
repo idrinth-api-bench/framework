@@ -1,12 +1,12 @@
-import Hashmap from '../../hashmap';
+import Hashmap from '../helper/hashmap.js';
 import {
   FIVE,
-} from '../../constants';
-import Config from './config';
+} from '../constants.js';
+import Config from './config.js';
 import {
   camelCase,
 } from 'change-case';
-import toValue from './to-value';
+import toValue from './to-value.js';
 
 export default (config: Config, env: Hashmap,) => {
   for (const key of Object.keys(env,)) {

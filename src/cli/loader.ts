@@ -6,15 +6,16 @@ import {
   FOURTH_ARGUMENT,
   SECOND_ARGUMENT,
   THIRD_ARGUMENT,
-  ONE, DEFAULT_LANGUAGE,
-} from '../constants';
+  ONE,
+  DEFAULT_LANGUAGE,
+} from '../constants.js';
 import fse from 'fs-extra';
 import reqlib from 'app-root-path';
-import run from '../main';
+import run from '../main.js';
 import language, {
   locale,
-} from '../helper/language';
-import jobCreator from '../helper/job-creator';
+} from '../helper/language.js';
+import jobCreator from '../routes/job-creator.js';
 
 // eslint-disable-next-line complexity
 const loadUp = async(args: string[],) => {

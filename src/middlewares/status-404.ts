@@ -1,18 +1,16 @@
-import Middleware from '../middleware';
-import Request from '../request';
-import Result from '../result';
-import staticImplements from '../helper/static-implements';
-import language from '../helper/language';
+import Middleware from './middleware.js';
+import Request from '../routes/request.js';
+import Result from '../messaging/result.js';
+import language from '../helper/language.js';
 
 const STATUS = 404;
 
-@staticImplements<Middleware>()
-class Status404 {
-  public static prepare(request: Request,): Request {
+export default class Status404 implements Middleware {
+  public prepare(request: Request,): Request {
     return request;
   }
 
-  public static process(response: Result,): void {
+  public process(response: Result,): void {
     if (typeof response.response.status === 'undefined') {
       throw new Error(language('no_response_status',),);
     }
@@ -23,4 +21,3 @@ class Status404 {
     }
   }
 }
-export default Status404;

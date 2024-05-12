@@ -1,4 +1,4 @@
-import FinishedSet from '../finished-set';
+import FinishedSet from '../messaging/finished-set.js';
 
 export interface ReportModifier {
     adjust(result: FinishedSet): FinishedSet;

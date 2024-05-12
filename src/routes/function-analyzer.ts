@@ -5,8 +5,8 @@ import {
   FIRST,
   STRING_LIMITER_REMOVAL_START,
   STRING_LIMITER_REMOVAL_LENGTH,
-} from '../constants';
-import language from './language';
+} from '../constants.js';
+import language from '../helper/language.js';
 
 export interface Param {
     name: string;

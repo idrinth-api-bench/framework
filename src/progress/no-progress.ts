@@ -1,5 +1,5 @@
-import Job from '../job';
-import Progress from './progress';
+import Job from '../routes/job.js';
+import Progress from './progress.js';
 
 class NoProgress implements Progress {
   // eslint-disable-next-line class-methods-use-this, @typescript-eslint/no-unused-vars

@@ -1,9 +1,9 @@
-import Reporter from './reporter';
-import store from '../result-store';
-import FinishedRun from '../finished-run';
+import Reporter from './reporter.js';
+import store from '../store/result-store.js';
+import FinishedRun from '../messaging/finished-run.js';
 import {
   EMPTY,
-} from '../constants';
+} from '../constants.js';
 
 const internal: Reporter = (
   results: FinishedRun,

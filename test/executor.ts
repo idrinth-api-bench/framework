@@ -5,14 +5,14 @@ import {
 } from 'chai';
 import 'mocha';
 import NullLogger from '../src/logger/null-logger';
-import Result from '../src/result';
-import FinishedSet from '../src/finished-set';
-import Task from '../src/task';
-import ValidationResult from '../src/validation-result';
-import Job from '../src/job';
+import Result from '../src/messaging/result';
+import FinishedSet from '../src/messaging/finished-set';
+import Task from '../src/routes/task';
+import ValidationResult from '../src/messaging/validation-result';
+import Job from '../src/routes/job';
 import NoopStorage from '../src/storage/noop-storage';
 import NoProgress from '../src/progress/no-progress';
-import Counter from '../src/counter';
+import Counter from '../src/helper/counter';
 
 const NOOP = () => {};
 const NONE = 0;

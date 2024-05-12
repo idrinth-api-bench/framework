@@ -1,6 +1,5 @@
 export interface StandardResponse {
   status?: string;
-
   success?: boolean;
 }
 

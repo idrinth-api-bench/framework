@@ -1,13 +1,13 @@
-import HashMap from '../hashmap';
-import Middleware from '../middleware';
+import HashMap from '../helper/hashmap.js';
+import Middleware from '../middlewares/middleware.js';
 import reqlib from 'app-root-path';
-import include from './include-default';
+import include from './include-default.js';
 import {
   FIRST,
   FRAMEWORK_ROOT,
   INCLUDE_EXTENSION,
   SECOND,
-} from '../constants';
+} from '../constants.js';
 
 const cache: HashMap = {};
 const resolve = (path: string,): string => {
@@ -27,6 +27,6 @@ const resolve = (path: string,): string => {
 };
 const load = async(path: string,): Promise<Middleware> => {
   const req = cache[path] || (cache[path] = resolve(path,));
-  return await include(req,) as Middleware;
+  return new (await include(req,)) as Middleware;
 };
 export default load;

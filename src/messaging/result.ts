@@ -1,7 +1,7 @@
 import {
   NeedleResponse,
 } from 'needle';
-import HashMap from './hashmap';
+import HashMap from '../helper/hashmap.js';
 
 const ToMicro = 1000000000;
 

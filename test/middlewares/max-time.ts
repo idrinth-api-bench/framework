@@ -3,7 +3,7 @@ import {
   expect,
 } from 'chai';
 import 'mocha';
-import Result from '../../src/result';
+import Result from '../../src/messaging/result';
 
 describe('middlewares/max-time', () => {
   it('should be a class', () => {

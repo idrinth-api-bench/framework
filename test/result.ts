@@ -1,5 +1,5 @@
 /* eslint no-magic-numbers:0 */
-import Result from '../src/result';
+import Result from '../src/messaging/result';
 import {
   expect,
 } from 'chai';

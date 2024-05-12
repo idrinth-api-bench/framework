@@ -1,9 +1,9 @@
-import MysqlStorage from './mysql-storage';
-import PostgresStorage from './postgres-storage';
-import MssqlStorage from './mssql-storage';
-import NoopStorage from './noop-storage';
-import Config from '../cli/config/config';
-import Storage from './storage';
+import MysqlStorage from './mysql-storage.js';
+import PostgresStorage from './postgres-storage.js';
+import MssqlStorage from './mssql-storage.js';
+import NoopStorage from './noop-storage.js';
+import Config from '../config/config.js';
+import Storage from './storage.js';
 
 // eslint-disable-next-line complexity
 export default (config: Config,): Storage => {

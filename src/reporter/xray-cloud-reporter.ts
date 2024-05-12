@@ -1,12 +1,12 @@
-import Reporter from './reporter';
-import FinishedRun from '../finished-run';
+import Reporter from './reporter.js';
+import FinishedRun from '../messaging/finished-run.js';
 import {
   EMPTY,
   FIRST_MATCH,
   INDENTATION_SPACES,
   STARTED,
-} from '../constants';
-import formatDate from '../helper/format-date';
+} from '../constants.js';
+import formatDate from '../helper/format-date.js';
 
 // eslint-disable-next-line complexity
 const xray: Reporter = async(

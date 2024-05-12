@@ -1,4 +1,4 @@
-import jobCreator from '../../src/helper/job-creator';
+import jobCreator from '../../src/routes/job-creator';
 import {
   expect,
 } from 'chai';

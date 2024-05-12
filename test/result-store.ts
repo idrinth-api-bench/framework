@@ -1,4 +1,4 @@
-import ResultStore from '../src/result-store';
+import ResultStore from '../src/store/result-store';
 import {
   expect,
 } from 'chai';

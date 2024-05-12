@@ -1,17 +1,17 @@
-import ValidationResult from '../validation-result';
-import language from '../helper/language';
-import ResultSet from '../result-set';
-import Progress from '../progress/progress';
-import Logger from '../logger/logger';
-import Thread from '../worker/thread';
-import Task from '../task';
-import store from '../store';
-import Job from '../job';
-import Counter from '../counter';
-import ResultMap from '../result-map';
+import ValidationResult from './validation-result.js';
+import language from '../helper/language.js';
+import ResultSet from './result-set.js';
+import Progress from '../progress/progress.js';
+import Logger from '../logger/logger.js';
+import Thread from '../worker/thread.js';
+import Task from '../routes/task.js';
+import store from '../store/store.js';
+import Job from '../routes/job.js';
+import Counter from '../helper/counter.js';
+import ResultMap from './result-map.js';
 import {
   EMPTY,
-} from '../constants';
+} from '../constants.js';
 
 const startAfter = (
   after: Thread,

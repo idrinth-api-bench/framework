@@ -1,9 +1,8 @@
-import Middleware from '../middleware';
-import Request from '../request';
-import Result from '../result';
-import staticImplements from '../helper/static-implements';
-import HashMap from '../hashmap';
-import store from '../store';
+import Middleware from './middleware.js';
+import Request from '../routes/request.js';
+import Result from '../messaging/result.js';
+import HashMap from '../helper/hashmap.js';
+import store from '../store/store.js';
 
 const jsonCheck = /^application\/json/ui;
 
@@ -20,9 +19,8 @@ const get = (
   return fallback;
 };
 
-@staticImplements<Middleware>()
-class Access {
-  public static prepare(request: Request,): Request {
+class Access implements Middleware {
+  public prepare(request: Request,): Request {
     const access = store.get('access', '',);
     const refresh = store.get('refresh', '',);
     if (access) {
@@ -44,7 +42,7 @@ class Access {
     return request;
   }
 
-  public static process(response: Result,): void {
+  public process(response: Result,): void {
     if (typeof response.response.headers === 'undefined') {
       return;
     }

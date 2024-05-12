@@ -1,21 +1,19 @@
-import staticImplements from '../helper/static-implements';
-import Middleware from '../middleware';
-import Request from '../request';
-import Result from '../result';
-import language from '../helper/language';
+import Middleware from './middleware.js';
+import Request from '../routes/request.js';
+import Result from '../messaging/result.js';
+import language from '../helper/language.js';
 import {
   XMLValidator as FastXMLValidator,
 } from 'fast-xml-parser';
 
 const xmlCheck = /\/xml/ui;
 
-@staticImplements<Middleware>()
-export default class XMLValidator {
-  public static prepare(request: Request,): Request {
+export default class XMLValidator implements Middleware {
+  public prepare(request: Request,): Request {
     return request;
   }
 
-  public static process(result: Result,): void {
+  public process(result: Result,): void {
     if (typeof result.response.headers['content-type'] === 'undefined') {
       throw Error(language('no_content_type',),);
     }
