@@ -39,7 +39,7 @@
     "@fast-csv/format": "^5.0.0",
     "app-root-path": "^3.1.0",
     "cli-progress": "^3.12.0",
-    "cli-table3": "^0.6.3",
+    "cli-table3": "^0.6.5",
     "form-urlencoded": "^6.1.4",
     "change-case": "^5.2.0",
     "needle": "^3.2.0",
@@ -67,7 +67,7 @@
     "@types/mock-fs": "^4.13.4",
     "@types/needle": "^3.2.3",
     "c8": "^9.1.0",
-    "chai": "^5.0.3",
+    "chai": "^5.1.1",
     "consolemock": "^1.1.0",
     "eslint": "^8.55.0",
     "fast-check": "^3.17.1",
@@ -79,10 +79,10 @@
     "winston": "^3.11.0",
     "markdownlint-cli": "^0.40.0",
     "spellchecker-cli": "^6.2.0",
-    "knip": "^5.13.0",
     "fta-cli": "^2.0.0",
     "simple-git-hooks": "^2.11.1",
     "eslint-plugin-json": "^3.1.0"
+    "knip": "^5.15.1"
   },
   "bin": {
     "iab": "bin/iab.js"
