@@ -2,7 +2,7 @@
   "name": "@idrinth-api-bench/framework",
   "description": "A library to benchmark apis, no matter if rest or soap",
   "license": "MIT",
-  "version": "2.7.4",
+  "version": "1.0.0",
   "type": "module",
   "main": "index.js",
   "homepage": "https://idrinth-api-ben.ch",
@@ -55,7 +55,9 @@
     "postgres": "^3.4.4"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.2.1",
     "@databases/mysql-test": "^4.0.2",
+    "@typescript-eslint/eslint-plugin": "^7.8.0",
     "@types/app-root-path": "^1.2.8",
     "@types/chai": "^4.3.11",
     "@types/cli-progress": "^3.11.5",
@@ -77,15 +79,12 @@
     "winston": "^3.11.0",
     "markdownlint-cli": "^0.40.0",
     "spellchecker-cli": "^6.2.0",
+    "fta-cli": "^2.0.0",
+    "simple-git-hooks": "^2.11.1",
+    "eslint-plugin-json": "^3.1.0",
     "knip": "^5.15.1"
   },
   "bin": {
-    "run-benchmark": "bin/run-benchmark.js",
-    "check-route-definitions": "bin/check-route-definitions.js",
-    "run-loadtest": "bin/run-loadtest.js",
-    "iabl": "bin/run-loadtest.js",
-    "iabr": "bin/run-benchmark.js",
-    "iabcrd": "bin/check-route-definitions.js",
     "iab": "bin/iab.js"
   },
   "scripts": {
@@ -100,8 +99,14 @@
     "prepublishOnly": "npm run tsc",
     "postpublishOnly": "npm run clear",
     "language": "itlfy generate",
+    "check-language": "itlfy check",
     "spellcheck": "itlfy dump && spellchecker",
-    "knip": "knip --exclude duplicates --exclude exports --exclude types"
+    "knip": "knip --exclude duplicates --exclude exports --exclude types",
+    "commitlint": "commitlint --edit",
+    "commitlint-ci": "commitlint --last",
+    "fta": "node tools/fta.js",
+    "postinstall": "npm run simple-git-hooks",
+    "simple-git-hooks": "simple-git-hooks"
   },
   "engines": {
     "node": ">=20"
