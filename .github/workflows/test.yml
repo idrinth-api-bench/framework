@@ -1,0 +1,173 @@
+name: TEST
+on:
+  push:
+    branches:
+    - the-one
+    paths:
+    - '**.ts'
+    - '**.js'
+    - '**.cjs'
+    - '**.json'
+    - '.github/workflows/test.yml'
+  pull_request:
+    branches:
+    - the-one
+    paths:
+    - '**.ts'
+    - '**.js'
+    - '**.cjs'
+    - '**.json'
+    - '.github/workflows/test.yml'
+env:
+  PREVIOUS_NODE_VERSION: ${{ vars.PREVIOUS_NODE_VERSION || 'lts/*' }}
+  CURRENT_NODE_VERSION: ${{ vars.CURRENT_NODE_VERSION || 'latest' }}
+  NODE_VERSION_21: '21'
+  NODE_VERSION_22: '22'
+jobs:
+  example_matrix:
+    strategy:
+      matrix:
+        version: [${{ env.PREVIOUS_NODE_VERSION }}, ${{ env.CURRENT_NODE_VERSION }}, ${{ env.NODE_VERSION_21 }}, ${{ env.NODE_VERSION_22 }}]
+        os: [ubuntu-latest]
+    runs-on: ${{matrix.os}}
+    name: Node.js ${{ matrix.version }} on ${{ matrix.os }}
+  framework-previous:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js ${{ matrix.version }}
+        uses: actions/setup-node@v4.0.2
+        with:
+          node-version: ${{ matrix.version }}
+          cache: 'npm'
+          cache-dependency-path: |
+            framework/package-lock.json
+            documentation-website/package-lock.json
+            history-microservice/package-lock.json
+            history-website/package-lock.json
+            cli/package-lock.json
+            package-lock.json
+      - run: npm ci
+      - run: npm run language
+      - run: npm run test
+      - name: Coveralls
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          parallel: true
+          flag-name: run ${{ env.PREVIOUS_NODE_VERSION }}
+  framework-current:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js ${{ matrix.version }}
+        uses: actions/setup-node@v4.0.2
+        with:
+          node-version: ${{ matrix.version }}
+          cache: 'npm'
+          cache-dependency-path: |
+            framework/package-lock.json
+            documentation-website/package-lock.json
+            history-microservice/package-lock.json
+            history-website/package-lock.json
+            cli/package-lock.json
+            package-lock.json
+      - run: npm ci
+      - run: npm run language
+      - run: npm run test
+      - name: Coveralls
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          parallel: true
+          flag-name: run ${{ env.CURRENT_NODE_VERSION }}
+  framework-integration-previous:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js ${{ matrix.version }}
+        uses: actions/setup-node@v4.0.2
+        with:
+          node-version: ${{ matrix.version }}
+          cache: 'npm'
+          cache-dependency-path: |
+            framework/package-lock.json
+            documentation-website/package-lock.json
+            history-microservice/package-lock.json
+            history-website/package-lock.json
+            cli/package-lock.json
+            package-lock.json
+      - run: npm ci
+      - run: npm run language
+      - run: npm run integration
+      - name: Coveralls
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          parallel: true
+          flag-name: integration ${{ env.PREVIOUS_NODE_VERSION }}
+  framework-integration-current:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js ${{ matrix.version }}
+        uses: actions/setup-node@v4.0.2
+        with:
+          node-version: ${{ matrix.version }}
+          cache: 'npm'
+          cache-dependency-path: |
+            framework/package-lock.json
+            documentation-website/package-lock.json
+            history-microservice/package-lock.json
+            history-website/package-lock.json
+            cli/package-lock.json
+            package-lock.json
+      - run: ci
+      - run: run language
+      - run: run integration
+      - name: Coveralls
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          parallel: true
+          flag-name: integration ${{ env.CURRENT_NODE_VERSION }}
+  framework-property:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js ${{ matrix.version }}
+        uses: actions/setup-node@v4.0.2
+        with:
+          node-version: ${{ matrix.version }}
+          cache: 'npm'
+          cache-dependency-path: |
+            framework/package-lock.json
+            documentation-website/package-lock.json
+            history-microservice/package-lock.json
+            history-website/package-lock.json
+            cli/package-lock.json
+            package-lock.json
+      - run: npm ci
+      - run: npm run language
+      - run: npm run test
+      - name: Coveralls
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          parallel: true
+          flag-name: property ${{ env.CURRENT_NODE_VERSION }}
+  end:
+    runs-on: ubuntu-latest
+    needs:
+      - example_matrix
+      - framework-previous
+      - framework-current
+      - framework-integration-current
+      - framework-integration-previous
+      - framework-property
+    steps:
+    - name: Coveralls
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        parallel-finished: true
