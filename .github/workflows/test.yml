@@ -6,25 +6,19 @@ on:
     paths:
     - '**.ts'
     - '**.js'
-    - '**.cjs'
-    - '**.json'
-    - '.github/workflows/test.yml'
   pull_request:
     branches:
     - the-one
     paths:
     - '**.ts'
     - '**.js'
-    - '**.cjs'
-    - '**.json'
-    - '.github/workflows/test.yml'
 env:
   PREVIOUS_NODE_VERSION: ${{ vars.PREVIOUS_NODE_VERSION || 'lts/*' }}
   CURRENT_NODE_VERSION: ${{ vars.CURRENT_NODE_VERSION || 'latest' }}
   NODE_VERSION_21: '21'
   NODE_VERSION_22: '22'
 jobs:
-  framework-current:
+  unit-test:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -41,11 +35,6 @@ jobs:
           cache: 'npm'
           cache-dependency-path: |
             framework/package-lock.json
-            documentation-website/package-lock.json
-            history-microservice/package-lock.json
-            history-website/package-lock.json
-            cli/package-lock.json
-            package-lock.json
       - run: npm ci
       - run: npm run language
       - run: npm run test
@@ -54,8 +43,8 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           parallel: true
-          flag-name: run ${{ env.CURRENT_NODE_VERSION }}
-  framework-integration-current:
+          flag-name: unit-test-${{ env.CURRENT_NODE_VERSION }}
+  integration:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -72,11 +61,6 @@ jobs:
           cache: 'npm'
           cache-dependency-path: |
             framework/package-lock.json
-            documentation-website/package-lock.json
-            history-microservice/package-lock.json
-            history-website/package-lock.json
-            cli/package-lock.json
-            package-lock.json
       - run: npm ci
       - run: npm run language
       - run: npm run integration
@@ -86,7 +70,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           parallel: true
           flag-name: integration ${{ env.CURRENT_NODE_VERSION }}
-  framework-property:
+  property:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -103,11 +87,6 @@ jobs:
           cache: 'npm'
           cache-dependency-path: |
             framework/package-lock.json
-            documentation-website/package-lock.json
-            history-microservice/package-lock.json
-            history-website/package-lock.json
-            cli/package-lock.json
-            package-lock.json
       - run: npm ci
       - run: npm run language
       - run: npm run property
@@ -116,7 +95,7 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           parallel: true
-          flag-name: property ${{ env.CURRENT_NODE_VERSION }}
+          flag-name: property-test-${{ matrix.version }}
   end:
     runs-on: ubuntu-latest
     needs:
