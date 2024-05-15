@@ -1,15 +1,17 @@
-import jobCreator from '../helper/job-creator.js';
-import language, {locale,} from '../helper/language.js';
+import jobCreator from '../routes/job-creator.js';
+import language, {
+  locale,
+} from '../helper/language.js';
 import {
   DEFAULT_LANGUAGE,
   EMPTY,
   FIRST_ARGUMENT,
 } from '../constants.js';
-import taskTypes from '../task-types.js';
+import taskTypes from '../routes/task-types.js';
 import logSymbols from 'log-symbols';
-import error from "../validation/error.js";
-import checkType from "../validation/check-type.js";
-import noDuplicateIds from "../no-duplicate-ids.js";
+import error from '../validation/error.js';
+import checkType from '../validation/check-type.js';
+import noDuplicateIds from '../validation/no-duplicate-ids.js';
 
 // eslint-disable-next-line complexity
 export default async(args: string[], cwd: string,): Promise<void> => {
