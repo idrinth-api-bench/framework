@@ -6,12 +6,14 @@ on:
     paths:
     - '**.ts'
     - '**.js'
+    - '**.json'
   pull_request:
     branches:
     - the-one
     paths:
     - '**.ts'
     - '**.js'
+    - '**.json'
 env:
   PREVIOUS_NODE_VERSION: ${{ vars.PREVIOUS_NODE_VERSION || 'lts/*' }}
   CURRENT_NODE_VERSION: ${{ vars.CURRENT_NODE_VERSION || 'latest' }}
@@ -99,11 +101,9 @@ jobs:
   end:
     runs-on: ubuntu-latest
     needs:
-      - framework-previous
-      - framework-current
-      - framework-integration-current
-      - framework-integration-previous
-      - framework-property
+      - unit-test
+      - integration
+      - property
     steps:
     - name: Coveralls
       uses: coverallsapp/github-action@master
