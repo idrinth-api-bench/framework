@@ -24,37 +24,6 @@ env:
   NODE_VERSION_21: '21'
   NODE_VERSION_22: '22'
 jobs:
-  framework-previous:
-    strategy:
-      matrix:
-        version:
-        - 20
-        - 21
-        - 22
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Use Node.js ${{ matrix.version }}
-        uses: actions/setup-node@v4.0.2
-        with:
-          node-version: ${{ matrix.version }}
-          cache: 'npm'
-          cache-dependency-path: |
-            framework/package-lock.json
-            documentation-website/package-lock.json
-            history-microservice/package-lock.json
-            history-website/package-lock.json
-            cli/package-lock.json
-            package-lock.json
-      - run: npm ci
-      - run: npm run language
-      - run: npm run test
-      - name: Coveralls
-        uses: coverallsapp/github-action@master
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          parallel: true
-          flag-name: run ${{ env.PREVIOUS_NODE_VERSION }}
   framework-current:
     runs-on: ubuntu-latest
     strategy:
@@ -86,37 +55,6 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           parallel: true
           flag-name: run ${{ env.CURRENT_NODE_VERSION }}
-  framework-integration-previous:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        version:
-        - 20
-        - 21
-        - 22
-    steps:
-      - uses: actions/checkout@v4
-      - name: Use Node.js ${{ matrix.version }}
-        uses: actions/setup-node@v4.0.2
-        with:
-          node-version: ${{ matrix.version }}
-          cache: 'npm'
-          cache-dependency-path: |
-            framework/package-lock.json
-            documentation-website/package-lock.json
-            history-microservice/package-lock.json
-            history-website/package-lock.json
-            cli/package-lock.json
-            package-lock.json
-      - run: npm ci
-      - run: npm run language
-      - run: npm run integration
-      - name: Coveralls
-        uses: coverallsapp/github-action@master
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          parallel: true
-          flag-name: integration ${{ env.PREVIOUS_NODE_VERSION }}
   framework-integration-current:
     runs-on: ubuntu-latest
     strategy:
