@@ -7,6 +7,7 @@ on:
     - '**.ts'
     - '**.js'
     - '**.json'
+    - '.github/workflows/test.yml'
   pull_request:
     branches:
     - the-one
@@ -14,9 +15,7 @@ on:
     - '**.ts'
     - '**.js'
     - '**.json'
-env:
-  PREVIOUS_NODE_VERSION: ${{ vars.PREVIOUS_NODE_VERSION || 'lts/*' }}
-  CURRENT_NODE_VERSION: ${{ vars.CURRENT_NODE_VERSION || 'latest' }}
+    - '.github/workflows/test.yml'
 jobs:
   unit-test:
     runs-on: ubuntu-latest
