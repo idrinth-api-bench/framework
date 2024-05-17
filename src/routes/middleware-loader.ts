@@ -27,6 +27,6 @@ const resolve = (path: string,): string => {
 };
 const load = async(path: string,): Promise<Middleware> => {
   const req = cache[path] || (cache[path] = resolve(path,));
-  return new (await include(req,)) as Middleware;
+  return new (await include(req,))() as Middleware;
 };
 export default load;
