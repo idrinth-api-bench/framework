@@ -1,6 +1,7 @@
 import Task from '../routes/task.js';
 import error from './error.js';
 
+// eslint-disable-next-line complexity
 const checkMiddleware = (
   type: 'pre' | 'post',
   route: Task,
