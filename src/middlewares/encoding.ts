@@ -1,7 +1,8 @@
-import Middleware from './middleware.js';
+import {
+  prepare as prepareType
+} from './middleware.js';
 import Request from '../routes/request.js';
 import formUrlEncoded from 'form-urlencoded';
-import Result from '../messaging/result.js';
 
 const handleForm = (request: Request,): Request => {
   if (! request.headers['content-type']) {
@@ -18,22 +19,15 @@ const handleJSON = (request: Request,): Request => {
   return request;
 };
 
-class Encoding implements Middleware {
-  public prepare(request: Request,): Request {
-    if (typeof request.headers === 'undefined') {
-      request.headers = {};
-    }
-    if (request.autohandle === 'json') {
-      return handleJSON(request,);
-    }
-    if (request.autohandle === 'form' && typeof request.body === 'object') {
-      return handleForm(request,);
-    }
-    return request;
+export const prepare: prepareType = (request: Request,): Request => {
+  if (typeof request.headers === 'undefined') {
+    request.headers = {};
   }
-
-  public process(response: Result,): void {
-    //no task here
+  if (request.autohandle === 'json') {
+    return handleJSON(request,);
   }
+  if (request.autohandle === 'form' && typeof request.body === 'object') {
+    return handleForm(request,);
+  }
+  return request;
 }
-export default Encoding;

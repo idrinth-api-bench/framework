@@ -1,4 +1,7 @@
-import Middleware from './middleware.js';
+import {
+  process as processType,
+  prepare as prepareType,
+} from './middleware.js';
 import Request from '../routes/request.js';
 import Result from '../messaging/result.js';
 import HashMap from '../helper/hashmap.js';
@@ -19,44 +22,41 @@ const get = (
   return fallback;
 };
 
-class Access implements Middleware {
-  public prepare(request: Request,): Request {
-    const access = store.get('access', '',);
-    const refresh = store.get('refresh', '',);
-    if (access) {
-      if (typeof request.body === 'string') {
-        request.body = request.body.replace(
-          /%refresh-token-middleware%/ug,
-          refresh,
-        );
-        request.body = request.body.replace(
-          /%access-token-middleware%/ug,
-          access,
-        );
-      }
-      if (typeof request.headers === 'undefined') {
-        request.headers = {};
-      }
-      request.headers.authorization = `Bearer ${ access }`;
+export const prepare: prepareType = (request: Request,): Request => {
+  const access = store.get('access', '',);
+  const refresh = store.get('refresh', '',);
+  if (access) {
+    if (typeof request.body === 'string') {
+      request.body = request.body.replace(
+        /%refresh-token-middleware%/ug,
+        refresh,
+      );
+      request.body = request.body.replace(
+        /%access-token-middleware%/ug,
+        access,
+      );
     }
-    return request;
+    if (typeof request.headers === 'undefined') {
+      request.headers = {};
+    }
+    request.headers.authorization = `Bearer ${ access }`;
   }
-
-  public process(response: Result,): void {
-    if (typeof response.response.headers === 'undefined') {
-      return;
-    }
-    const contentType = response.response.headers['content-type'];
-    if (! jsonCheck.test(contentType,)) {
-      return;
-    }
-    const body = JSON.parse(response.response.body,);
-    let access = store.get('access', '',);
-    let refresh = store.get('refresh', '',);
-    access = get(access, body, 'access', 'access_token', 'access-token',);
-    refresh = get(refresh, body, 'refresh', 'refresh_token', 'refresh-token',);
-    store.set('access', access,);
-    store.set('refresh', refresh,);
-  }
+  return request;
 }
-export default Access;
+
+export const process: processType = (response: Result,): void => {
+  if (typeof response.response.headers === 'undefined') {
+    return;
+  }
+  const contentType = response.response.headers['content-type'];
+  if (! jsonCheck.test(contentType,)) {
+    return;
+  }
+  const body = JSON.parse(response.response.body,);
+  let access = store.get('access', '',);
+  let refresh = store.get('refresh', '',);
+  access = get(access, body, 'access', 'access_token', 'access-token',);
+  refresh = get(refresh, body, 'refresh', 'refresh_token', 'refresh-token',);
+  store.set('access', access,);
+  store.set('refresh', refresh,);
+}
