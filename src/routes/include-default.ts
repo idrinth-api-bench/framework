@@ -5,7 +5,6 @@ import {
 } from '../constants.js';
 import language from '../helper/language.js';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const include = async(
   path: string,
   part: string = 'default',
