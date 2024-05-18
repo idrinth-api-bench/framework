@@ -1,7 +1,10 @@
-import Task from '../task.js';
+import Task from '../routes/task.js';
 import error from './error.js';
 
-const checkMiddleware = (type: 'pre' | 'post', route: Task,) => {
+const checkMiddleware = (
+  type: 'pre' | 'post',
+  route: Task,
+) => {
   if (typeof route[type] === 'undefined') {
     return true;
   }

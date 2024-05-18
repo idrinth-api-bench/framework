@@ -17,7 +17,7 @@ export const prepare: prepareType = (request: Request,): Request => {
     }
   }
   return request;
-}
+};
 
 export const process: processType = (response: Result,): void => {
   if (typeof response.response.headers === 'undefined') {
@@ -26,4 +26,4 @@ export const process: processType = (response: Result,): void => {
   if (response.response.headers['x-csrf-token']) {
     store.set('csrf', response.response.headers['x-csrf-token'],);
   }
-}
+};

@@ -28,11 +28,14 @@ const resolve = (path: string,): string => {
   }
   return path.endsWith(INCLUDE_EXTENSION,) ? path : path + INCLUDE_EXTENSION;
 };
-const load = async(path: string, part: 'pre'|'post',): Promise<prepare|process> => {
+const load = async(
+  path: string,
+  part: 'pre'|'post',
+): Promise<prepare|process> => {
   const req = cache[path] || (cache[path] = resolve(path,));
   if (part === 'pre') {
     return await include(req, 'prepare',) as prepare;
   }
-  return await include(req, 'process') as process;
+  return await include(req, 'process',) as process;
 };
 export default load;

@@ -1,5 +1,5 @@
 import {
-  prepare as prepareType
+  prepare as prepareType,
 } from './middleware.js';
 import Request from '../routes/request.js';
 import formUrlEncoded from 'form-urlencoded';
@@ -30,4 +30,4 @@ export const prepare: prepareType = (request: Request,): Request => {
     return handleForm(request,);
   }
   return request;
-}
+};

@@ -17,4 +17,4 @@ export const process: processType = (response: Result,): void => {
   if (response.response.status < MINIMUM) {
     throw new Error(language('response_status_below_2xx',),);
   }
-}
+};

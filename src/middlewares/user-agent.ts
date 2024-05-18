@@ -12,4 +12,4 @@ export const prepare: prepareType = (request: Request,): Request => {
     request.headers['user-agent'] = agent;
   }
   return request;
-}
+};

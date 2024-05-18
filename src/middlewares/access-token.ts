@@ -42,7 +42,7 @@ export const prepare: prepareType = (request: Request,): Request => {
     request.headers.authorization = `Bearer ${ access }`;
   }
   return request;
-}
+};
 
 export const process: processType = (response: Result,): void => {
   if (typeof response.response.headers === 'undefined') {
@@ -59,4 +59,4 @@ export const process: processType = (response: Result,): void => {
   refresh = get(refresh, body, 'refresh', 'refresh_token', 'refresh-token',);
   store.set('access', access,);
   store.set('refresh', refresh,);
-}
+};

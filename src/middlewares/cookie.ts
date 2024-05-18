@@ -17,7 +17,7 @@ export const prepare: prepareType = (request: Request,): Request => {
     }
   }
   return request;
-}
+};
 
 export const process: processType = (response: Result,): void => {
   if (typeof response.response.cookies === 'undefined') {
@@ -30,4 +30,4 @@ export const process: processType = (response: Result,): void => {
     }
   }
   store.set('cookie', JSON.stringify(jar,),);
-}
+};

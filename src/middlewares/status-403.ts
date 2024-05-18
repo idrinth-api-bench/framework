@@ -1,5 +1,5 @@
 import {
-  process as processType
+  process as processType,
 } from './middleware.js';
 import Result from '../messaging/result.js';
 import language from '../helper/language.js';
@@ -16,4 +16,4 @@ export const process: processType = (response: Result,): void => {
       `${ response.response.status }`,
     ),);
   }
-}
+};

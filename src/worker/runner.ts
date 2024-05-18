@@ -31,7 +31,10 @@ const handlePre = async(task: Task,) => {
   if (task.pre) {
     for (const middleware of task.pre) {
       // eslint-disable-next-line no-await-in-loop
-      const requestMiddleware: prepare = await load(middleware, 'pre',) as prepare;
+      const requestMiddleware: prepare = await load(
+        middleware,
+        'pre',
+      ) as prepare;
       task.main = requestMiddleware(task.main,);
     }
   }
@@ -42,7 +45,10 @@ const handlePost = async(task: Task, res:Result, callable: Callback,) => {
     for (const validator of task.post) {
       try {
         // eslint-disable-next-line no-await-in-loop
-        const validatorMiddleware: process = await load(validator, 'post',) as process;
+        const validatorMiddleware: process = await load(
+          validator,
+          'post',
+        ) as process;
         validatorMiddleware(res,);
       } catch (er) {
         callable(buildAnswer(res, er+'', false,),);

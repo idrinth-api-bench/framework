@@ -11,4 +11,4 @@ export const process: processType = (result: Result,): void => {
   if (result.duration > result.maxDuration) {
     throw new Error(language('too_slow', `${ result.maxDuration }`,),);
   }
-}
+};

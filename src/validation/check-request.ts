@@ -1,4 +1,4 @@
-import Request from '../request.js';
+import Request from '../routes/request.js';
 import error from './error.js';
 import {
   EMPTY,
@@ -57,7 +57,9 @@ const validateProperty = (property: Property, id: string, main: Request,) => {
     error('invalid_request_property', id, property.name,);
     return false;
   }
-  const allowedTypes: string[] = Array.isArray(property.type,) ? property.type : [ property.type, ];
+  const allowedTypes: string[] = Array.isArray(property.type,)
+    ? property.type
+    : [ property.type, ];
   if (! allowedTypes.includes(typeof main[property.name],)) {
     error('invalid_request_property', id, property.name,);
     delete main[property.name];

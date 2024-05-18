@@ -19,4 +19,4 @@ export const process: processType = (result: Result,): void => {
   } catch (e) {
     throw Error(language('invalid_json_body', `${ e }`,),);
   }
-}
+};

@@ -20,4 +20,4 @@ export const process: processType = (result: Result,): void => {
   if (FastXMLValidator.validate(result.response.body,) !== true) {
     throw Error(language('invalid_xml_body',),);
   }
-}
+};
