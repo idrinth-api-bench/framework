@@ -34,6 +34,7 @@ describe('middlewares/json-validator', () => {
         id: 'example',
         validators: [],
         duration: 234242,
+        maxDuration: 193,
         response: {
           headers: {
             'content-type': 'application/jason',
@@ -54,6 +55,7 @@ describe('middlewares/json-validator', () => {
         id: 'example',
         validators: [],
         duration: 234242,
+        maxDuration: 193,
         response: {
           headers: {
             'content-type': 'application/json',
@@ -74,6 +76,7 @@ describe('middlewares/json-validator', () => {
         id: 'example',
         validators: [],
         duration: 234242,
+        maxDuration: 193,
         response: {
           headers: {
             'content-type': 'application/json',

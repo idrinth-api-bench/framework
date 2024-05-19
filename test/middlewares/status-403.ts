@@ -6,9 +6,6 @@ import {
   expect,
 } from 'chai';
 import 'mocha';
-import {
-  NeedleHttpVerbs,
-} from 'needle';
 
 describe('middlewares/status-403', () => {
   it('should have a static method process', () => {

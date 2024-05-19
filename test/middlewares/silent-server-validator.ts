@@ -5,9 +5,6 @@ import {
   expect,
 } from 'chai';
 import 'mocha';
-import {
-  NeedleHttpVerbs,
-} from 'needle';
 import Result from '../../src/messaging/result.js';
 
 describe('middlewares/silent-server-validator', () => {
