@@ -3,7 +3,10 @@ import {
   request,
 } from 'needle';
 import Task from '../routes/task.js';
-import Middleware from '../middlewares/middleware.js';
+import {
+  prepare,
+  process,
+} from '../middlewares/middleware.js';
 import load from '../routes/middleware-loader.js';
 
 interface Answer {
@@ -28,8 +31,11 @@ const handlePre = async(task: Task,) => {
   if (task.pre) {
     for (const middleware of task.pre) {
       // eslint-disable-next-line no-await-in-loop
-      const requestMiddleware: Middleware = await load(middleware,);
-      task.main = requestMiddleware.prepare(task.main,);
+      const requestMiddleware: prepare = await load(
+        middleware,
+        'pre',
+      ) as prepare;
+      task.main = requestMiddleware(task.main,);
     }
   }
   return task.main;
@@ -39,8 +45,11 @@ const handlePost = async(task: Task, res:Result, callable: Callback,) => {
     for (const validator of task.post) {
       try {
         // eslint-disable-next-line no-await-in-loop
-        const validatorMiddleware: Middleware = await load(validator,);
-        validatorMiddleware.process(res,);
+        const validatorMiddleware: process = await load(
+          validator,
+          'post',
+        ) as process;
+        validatorMiddleware(res,);
       } catch (er) {
         callable(buildAnswer(res, er+'', false,),);
         return false;

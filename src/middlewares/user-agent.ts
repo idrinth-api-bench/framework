@@ -1,20 +1,15 @@
-import Middleware from './middleware.js';
-import Result from '../messaging/result.js';
+import {
+  prepare as prepareType,
+} from './middleware.js';
 import Request from '../routes/request.js';
 import agent from '../helper/user-agent.js';
 
-export default class UserAgent implements Middleware {
-  public prepare(request: Request,): Request {
-    if (typeof request.headers === 'undefined') {
-      request.headers = {};
-    }
-    if (! request.headers['user-agent']) {
-      request.headers['user-agent'] = agent;
-    }
-    return request;
+export const prepare: prepareType = (request: Request,): Request => {
+  if (typeof request.headers === 'undefined') {
+    request.headers = {};
   }
-
-  public process(response: Result,): void {
-    // noop
+  if (! request.headers['user-agent']) {
+    request.headers['user-agent'] = agent;
   }
-}
+  return request;
+};

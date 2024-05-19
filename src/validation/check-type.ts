@@ -1,5 +1,5 @@
-import Job from '../job.js';
-import taskType from '../task-type.js';
+import Job from '../routes/job.js';
+import taskType from '../routes/task-type.js';
 import {
   EMPTY,
 } from '../constants.js';
@@ -7,6 +7,7 @@ import checkRequest from './check-request.js';
 import warn from './warn.js';
 import checkMiddleware from './check-middleware.js';
 
+// eslint-disable-next-line complexity
 const checkType = (job: Job, type: taskType,) => {
   if (typeof job[type] === 'undefined') {
     return {

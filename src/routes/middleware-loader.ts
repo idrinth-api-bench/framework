@@ -1,5 +1,8 @@
 import HashMap from '../helper/hashmap.js';
-import Middleware from '../middlewares/middleware.js';
+import {
+  prepare,
+  process,
+} from '../middlewares/middleware.js';
 import reqlib from 'app-root-path';
 import include from './include-default.js';
 import {
@@ -25,8 +28,14 @@ const resolve = (path: string,): string => {
   }
   return path.endsWith(INCLUDE_EXTENSION,) ? path : path + INCLUDE_EXTENSION;
 };
-const load = async(path: string,): Promise<Middleware> => {
+const load = async(
+  path: string,
+  part: 'pre'|'post',
+): Promise<prepare|process> => {
   const req = cache[path] || (cache[path] = resolve(path,));
-  return new (await include(req,))() as Middleware;
+  if (part === 'pre') {
+    return await include(req, 'prepare',) as prepare;
+  }
+  return await include(req, 'process',) as process;
 };
 export default load;

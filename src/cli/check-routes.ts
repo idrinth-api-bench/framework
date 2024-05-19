@@ -32,6 +32,7 @@ export default async(args: string[], cwd: string,): Promise<void> => {
     error('validation_warnings', `${ warnings }`,);
   }
   if (warnings === EMPTY && errors === EMPTY) {
+    // eslint-disable-next-line no-console
     console.log(logSymbols.success + ' ' + language('no_errors_warnings',),);
   }
 };
