@@ -42,3 +42,4 @@ invalid_request: The request task %1% has unknown properties.
 response_not_success: 'The response was not success, %1% field was %2%'
 response_not_failure: 'The response was not failure, %1% field was %2%'
 no_errors_warnings: No errors or warnings found.
+impossible_include: Can't include %1%'s export %2%.

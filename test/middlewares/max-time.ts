@@ -1,29 +1,16 @@
-import MaxTime from '../../src/middlewares/max-time';
+import {
+  process as post,
+} from '../../src/middlewares/max-time.js';
 import {
   expect,
 } from 'chai';
 import 'mocha';
-import Result from '../../src/messaging/result';
+import Result from '../../src/messaging/result.js';
 
 describe('middlewares/max-time', () => {
-  it('should be a class', () => {
-    expect(MaxTime,).to.be.a('function',);
-  },);
-  describe('.prepare()', () => {
-    it('should be a function', () => {
-      expect(MaxTime.prepare,).to.be.a('function',);
-    },);
-    it('should return the unchanged param', () => {
-      const param = {
-        method: 'get',
-        url: 'https://localhost',
-      };
-      expect(MaxTime.prepare(param,),).to.be.equal(param,);
-    },);
-  },);
   describe('.process()', () => {
     it('should be a function', () => {
-      expect(MaxTime.process,).to.be.a('function',);
+      expect(post,).to.be.a('function',);
     },);
     it('should throw if the response is too slow', () => {
       const response: Result = {
@@ -39,7 +26,7 @@ describe('middlewares/max-time', () => {
           body: '',
         },
       };
-      expect(() => MaxTime.process(response,),)
+      expect(() => post(response,),)
         .to.throw(
           'The response time was above 193 ns',
         );
@@ -58,7 +45,7 @@ describe('middlewares/max-time', () => {
           body: '',
         },
       };
-      expect(() => MaxTime.process(response,),).to.not.throw();
+      expect(() => post(response,),).to.not.throw();
     },);
     it('should not throw if there is no max time', () => {
       const response: Result = {
@@ -75,7 +62,7 @@ describe('middlewares/max-time', () => {
           body: '',
         },
       };
-      expect(() => MaxTime.process(response,),).to.not.throw();
+      expect(() => post(response,),).to.not.throw();
     },);
   },);
 },);
