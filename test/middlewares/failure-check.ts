@@ -1,21 +1,17 @@
 /* eslint-disable max-len */
-import FailureCheck from '../../src/middlewares/failure-check';
+import {
+  process as post,
+} from '../../src/middlewares/failure-check.js';
 import {
   expect,
 } from 'chai';
 import 'mocha';
-import StandardResponse from '../../src/helper/standard-response';
-import Result from '../../src/messaging/result';
+import StandardResponse from '../../src/helper/standard-response.js';
+import Result from '../../src/messaging/result.js';
 
 describe('middlewares/failure-check', () => {
-  it('should be a class', () => {
-    expect(FailureCheck,).to.be.a('function',);
-  },);
-  it('should have a static method prepare', () => {
-    expect(FailureCheck.prepare,).to.be.a('function',);
-  },);
   it('should have a static method process', () => {
-    expect(FailureCheck.process,).to.be.a('function',);
+    expect(post,).to.be.a('function',);
   },);
   const bodyForSuccessResponse : Array<StandardResponse> = [
     {
@@ -46,7 +42,7 @@ describe('middlewares/failure-check', () => {
 
     it(`process should throw error for ${ field } field as ${ bodyObject[field] } `,
       () => {
-        expect(() => FailureCheck.process(input, ),).to.throw(
+        expect(() => post(input, ),).to.throw(
           `The response was not failure, ${ field } field was ${ bodyObject[field] }`,
         );
       },);
@@ -85,17 +81,7 @@ describe('middlewares/failure-check', () => {
 
     it(`process should not throw error for ${ field } field as ${ bodyObject[field] } `,
       () => {
-        expect(() => FailureCheck.process(input, ),).to.not.throw();
+        expect(() => post(input, ),).to.not.throw();
       },);
   }
-
-  it('prepare should return input', () => {
-    const input = {
-      headers: {},
-      cookies: {},
-      body: 'body',
-      url: 'url',
-    };
-    expect(FailureCheck.prepare(input,),).to.equal(input,);
-  },);
 },);

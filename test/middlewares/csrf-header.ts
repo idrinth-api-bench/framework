@@ -1,29 +1,29 @@
-import CsrfHeader from '../../src/middlewares/csrf-header';
+import {
+  prepare as pre,
+  process as post,
+} from '../../src/middlewares/csrf-header.js';
 import {
   expect,
 } from 'chai';
 import 'mocha';
-import Request from '../../src/routes/request';
-import Result from '../../src/messaging/result';
-import store from '../../src/store/store';
+import Request from '../../src/routes/request.js';
+import Result from '../../src/messaging/result.js';
+import store from '../../src/store/store.js';
 
 describe('middlewares/csrf-header', () => {
   before(store.clean,);
   after(store.clean,);
-  it('should be a class', () => {
-    expect(CsrfHeader,).to.be.a('function',);
-  },);
   it('should have a static method prepare', () => {
-    expect(CsrfHeader.prepare,).to.be.a('function',);
+    expect(pre,).to.be.a('function',);
   },);
   it('should have a static method process', () => {
-    expect(CsrfHeader.process,).to.be.a('function',);
+    expect(post,).to.be.a('function',);
   },);
   it('should not set token by default', () => {
-    expect(CsrfHeader.prepare(<Request>{},),).to.deep.equal({},);
+    expect(pre(<Request>{},),).to.deep.equal({},);
   },);
   it('should get token by default', () => {
-    expect(() => CsrfHeader.process(<Result><unknown>{
+    expect(() => post(<Result><unknown>{
       response: {
         headers: {
           'x-csrf-token': 'def',
@@ -32,26 +32,26 @@ describe('middlewares/csrf-header', () => {
     },),).to.not.throw();
   },);
   it('should set token it has', () => {
-    expect(CsrfHeader.prepare(<Request>{},),).to.deep.equal({
+    expect(pre(<Request>{},),).to.deep.equal({
       headers: {
         'x-csrf-token': 'def',
       },
     },);
   },);
   it('should change no token if there\'s none', () => {
-    expect(() => CsrfHeader.process(<Result><unknown>{
+    expect(() => post(<Result><unknown>{
       response: {
         headers: {},
       },
     },),).to.not.throw();
   },);
   it('should change no token if the response is incomplete', () => {
-    expect(() => CsrfHeader.process(<Result><unknown>{
+    expect(() => post(<Result><unknown>{
       response: {},
     },),).to.not.throw();
   },);
   it('should set token it has', () => {
-    expect(CsrfHeader.prepare(<Request>{},),).to.deep.equal({
+    expect(pre(<Request>{},),).to.deep.equal({
       headers: {
         'x-csrf-token': 'def',
       },

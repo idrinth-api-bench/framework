@@ -1,9 +1,11 @@
-import MaxTime from '../../src/middlewares/max-time';
+import {
+  process as post,
+} from '../../src/middlewares/max-time.js';
 import {
   expect,
 } from 'chai';
 import 'mocha';
-import Result from '../../src/messaging/result';
+import Result from '../../src/messaging/result.js';
 import fc from 'fast-check';
 
 describe('middlewares/max-time', () => {
@@ -25,13 +27,13 @@ describe('middlewares/max-time', () => {
           },
         };
         if (duration > max) {
-          expect(() => MaxTime.process(response,),)
+          expect(() => post(response,),)
             .to.throw(
               `The response time was above ${ max } ns`,
             );
           return;
         }
-        expect(() => MaxTime.process(response,),).to.not.throw();
+        expect(() => post(response,),).to.not.throw();
       },
     );
   },),);

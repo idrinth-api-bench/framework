@@ -1,29 +1,29 @@
-import Access from '../../src/middlewares/access-token';
+import {
+  prepare as pre,
+  process as post,
+} from '../../src/middlewares/access-token.js';
 import {
   expect,
 } from 'chai';
 import 'mocha';
-import Request from '../../src/routes/request';
-import Result from '../../src/messaging/result';
-import store from '../../src/store/store';
+import Request from '../../src/routes/request.js';
+import Result from '../../src/messaging/result.js';
+import store from '../../src/store/store.js';
 
 describe('middlewares/csrf-header', () => {
   before(store.clean,);
   after(store.clean,);
-  it('should be a class', () => {
-    expect(Access,).to.be.a('function',);
-  },);
   it('should have a static method prepare', () => {
-    expect(Access.prepare,).to.be.a('function',);
+    expect(pre,).to.be.a('function',);
   },);
   it('should have a static method process', () => {
-    expect(Access.process,).to.be.a('function',);
+    expect(post,).to.be.a('function',);
   },);
   it('should not set token by default', () => {
-    expect(Access.prepare(<Request>{},),).to.deep.equal({},);
+    expect(pre(<Request>{},),).to.deep.equal({},);
   },);
   it('should get token by default', () => {
-    expect(() => Access.process(<Result><unknown>{
+    expect(() => post(<Result><unknown>{
       response: {
         headers: {
           'content-type': 'application/json',
@@ -33,26 +33,26 @@ describe('middlewares/csrf-header', () => {
     },),).to.not.throw();
   },);
   it('should set token it has', () => {
-    expect(Access.prepare(<Request>{},),).to.deep.equal({
+    expect(pre(<Request>{},),).to.deep.equal({
       headers: {
         'authorization': 'Bearer 11',
       },
     },);
   },);
   it('should change no token if the response is incomplete', () => {
-    expect(() => Access.process(<Result><unknown>{
+    expect(() => post(<Result><unknown>{
       response: {},
     },),).to.not.throw();
   },);
   it('should set token it has', () => {
-    expect(Access.prepare(<Request>{},),).to.deep.equal({
+    expect(pre(<Request>{},),).to.deep.equal({
       headers: {
         'authorization': 'Bearer 11',
       },
     },);
   },);
   it('should get refresh-token by default', () => {
-    expect(() => Access.process(<Result><unknown>{
+    expect(() => post(<Result><unknown>{
       response: {
         headers: {
           'content-type': 'application/json',
@@ -62,7 +62,7 @@ describe('middlewares/csrf-header', () => {
     },),).to.not.throw();
   },);
   it('should set all tokens it has', () => {
-    expect(Access.prepare(<Request>{
+    expect(pre(<Request>{
       body: '%refresh-token-middleware%%access-token-middleware%',
     },),).to.deep.equal({
       headers: {

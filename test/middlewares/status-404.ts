@@ -1,22 +1,15 @@
 /* eslint no-magic-numbers: 0 */
-import Status404 from '../../src/middlewares/status-404';
+import {
+  process as post,
+} from '../../src/middlewares/status-404.js';
 import {
   expect,
 } from 'chai';
 import 'mocha';
-import {
-  NeedleHttpVerbs,
-} from 'needle';
 
 describe('middlewares/status-404', () => {
-  it('should be a class', () => {
-    expect(Status404,).to.be.a('function',);
-  },);
-  it('should have a static method prepare', () => {
-    expect(Status404.prepare,).to.be.a('function',);
-  },);
   it('should have a static method process', () => {
-    expect(Status404.process,).to.be.a('function',);
+    expect(post,).to.be.a('function',);
   },);
   for (let i=100; i<404; i ++) {
     it(`process should throw for status ${ i }`, () => {
@@ -31,8 +24,9 @@ describe('middlewares/status-404', () => {
         duration: 0,
         id: '',
         validators: [],
+        maxDuration: 0,
       };
-      expect(() => Status404.process(input,),).to.throw(
+      expect(() => post(input,),).to.throw(
         `Request returned status ${ i }, not 404`,
       );
     },);
@@ -49,8 +43,9 @@ describe('middlewares/status-404', () => {
       duration: 0,
       id: '',
       validators: [],
+      maxDuration: 0,
     };
-    expect(() => Status404.process(input,),).to.not.throw();
+    expect(() => post(input,),).to.not.throw();
   },);
   for (let i=405; i<1000; i ++) {
     it(`process should throw for status ${ i }`, () => {
@@ -65,8 +60,9 @@ describe('middlewares/status-404', () => {
         duration: 0,
         id: '',
         validators: [],
+        maxDuration: 0,
       };
-      expect(() => Status404.process(input,),).to.throw(
+      expect(() => post(input,),).to.throw(
         `Request returned status ${ i }, not 404`,
       );
     },);
@@ -84,19 +80,10 @@ describe('middlewares/status-404', () => {
       duration: 0,
       id: '',
       validators: [],
+      maxDuration: 0,
     };
-    expect(() => Status404.process(input,),).to.throw(
+    expect(() => post(input,),).to.throw(
       'Request returned no status',
     );
-  },);
-  it('prepare should return input', () => {
-    const input = {
-      method: 'head' as NeedleHttpVerbs,
-      headers: {},
-      cookies: {},
-      body: 'body',
-      url: 'url',
-    };
-    expect(Status404.prepare(input,),).to.equal(input,);
   },);
 },);

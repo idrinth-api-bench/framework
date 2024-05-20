@@ -1,9 +1,9 @@
 import Task from './task.js';
-import language from './helper/language.js';
+import language from '../helper/language.js';
 import {
   EMPTY,
-} from './constants.js';
-import noDuplicateIds from './no-duplicate-ids.js';
+} from '../constants.js';
+import noDuplicateIds from '../validation/no-duplicate-ids.js';
 
 const executableAmount = (
   repetitions: number,

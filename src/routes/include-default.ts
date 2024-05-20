@@ -12,8 +12,8 @@ const include = async(
   path = path
     .replace(/\/\//ug, '/',)
     .replace(/\.ts$/u, INCLUDE_EXTENSION,);
-  const val = await import('file://' + path,)[part];
-  if (typeof val !== 'function') {
+  const val = (await import('file://' + path,))[part];
+  if (typeof val === 'undefined') {
     throw new Error(language('impossible_include', path, part,),);
   }
   if (part === 'default' && isCallable(val,)) {

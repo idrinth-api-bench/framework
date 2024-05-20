@@ -1,22 +1,15 @@
 /* eslint no-magic-numbers: 0 */
-import Status2xx from '../../src/middlewares/status-2xx';
+import {
+  process as post,
+} from '../../src/middlewares/status-2xx.js';
 import {
   expect,
 } from 'chai';
 import 'mocha';
-import {
-  NeedleHttpVerbs,
-} from 'needle';
 
 describe('middlewares/status-2xx', () => {
-  it('should be a class', () => {
-    expect(Status2xx,).to.be.a('function',);
-  },);
-  it('should have a static method prepare', () => {
-    expect(Status2xx.prepare,).to.be.a('function',);
-  },);
   it('should have a static method process', () => {
-    expect(Status2xx.process,).to.be.a('function',);
+    expect(post,).to.be.a('function',);
   },);
   for (let i=0; i<100; i ++) {
     it(`process should throw for status ${ 100+i }`, () => {
@@ -31,8 +24,9 @@ describe('middlewares/status-2xx', () => {
         duration: 0,
         id: '',
         validators: [],
+        maxDuration: 0,
       };
-      expect(() => Status2xx.process(input,),).to.throw(
+      expect(() => post(input,),).to.throw(
         'Request returned status below 200-299 range',
       );
     },);
@@ -50,8 +44,9 @@ describe('middlewares/status-2xx', () => {
         duration: 0,
         id: '',
         validators: [],
+        maxDuration: 0,
       };
-      expect(() => Status2xx.process(input,),).to.not.throw();
+      expect(() => post(input,),).to.not.throw();
     },);
   }
   for (let i=0; i<700; i ++) {
@@ -67,8 +62,9 @@ describe('middlewares/status-2xx', () => {
         duration: 0,
         id: '',
         validators: [],
+        maxDuration: 0,
       };
-      expect(() => Status2xx.process(input,),).to.throw(
+      expect(() => post(input,),).to.throw(
         'Request returned status above 200-299 range',
       );
     },);
@@ -86,19 +82,10 @@ describe('middlewares/status-2xx', () => {
       duration: 0,
       id: '',
       validators: [],
+      maxDuration: 0,
     };
-    expect(() => Status2xx.process(input,),).to.throw(
+    expect(() => post(input,),).to.throw(
       'Request returned no status',
     );
-  },);
-  it('prepare should return input', () => {
-    const input = {
-      method: 'head' as NeedleHttpVerbs,
-      headers: {},
-      cookies: {},
-      body: 'body',
-      url: 'url',
-    };
-    expect(Status2xx.prepare(input,),).to.equal(input,);
   },);
 },);

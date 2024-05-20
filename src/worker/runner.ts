@@ -5,7 +5,7 @@ import {
 import Task from '../routes/task.js';
 import {
   prepare,
-  process,
+  process as post,
 } from '../middlewares/middleware.js';
 import load from '../routes/middleware-loader.js';
 
@@ -45,10 +45,10 @@ const handlePost = async(task: Task, res:Result, callable: Callback,) => {
     for (const validator of task.post) {
       try {
         // eslint-disable-next-line no-await-in-loop
-        const validatorMiddleware: process = await load(
+        const validatorMiddleware: post = await load(
           validator,
           'post',
-        ) as process;
+        ) as post;
         validatorMiddleware(res,);
       } catch (er) {
         callable(buildAnswer(res, er+'', false,),);
