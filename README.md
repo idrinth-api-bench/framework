@@ -8,7 +8,7 @@
   - [Code Generation](#code-generation)
 - [Usage \& Examples](#usage--examples)
 - [CI Images](#ci-images)
-- [License](#license)
+- [Licence](#licence)
 - [Socials](#socials)
 - [Support](#support)
 - [Privacy and Compliance](#privacy-and-compliance)
@@ -38,9 +38,9 @@ We have ready to be used CI Images:
 - [Gitea Action](https://hub.docker.com/r/idrinth/api-bench-gitea-action)
 - [Pure Alpine](https://hub.docker.com/r/idrinth/api-bench)
 
-## License
+## Licence
 
-This project is MIT-licensed.
+This project is MIT-licenced.
 
 ## Socials
 
