@@ -70,7 +70,7 @@
     "chai": "^5.1.1",
     "consolemock": "^1.1.0",
     "eslint": "^8.55.0",
-    "fast-check": "^3.17.1",
+    "fast-check": "^3.19.0",
     "mocha": "^10.2.0",
     "mock-fs": "^5.2.0",
     "pino": "^9.1.0",
