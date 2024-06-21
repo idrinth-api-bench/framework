@@ -57,7 +57,7 @@
   "devDependencies": {
     "@commitlint/cli": "^19.2.1",
     "@databases/mysql-test": "^4.0.2",
-    "@typescript-eslint/eslint-plugin": "^7.12.0",
+    "@typescript-eslint/eslint-plugin": "^7.13.1",
     "@types/app-root-path": "^1.2.8",
     "@types/chai": "^4.3.11",
     "@types/cli-progress": "^3.11.5",
