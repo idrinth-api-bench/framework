@@ -75,7 +75,7 @@
     "mock-fs": "^5.2.0",
     "pino": "^9.2.0",
     "ts-node": "^10.9.1",
-    "typescript": "^5.3.2",
+    "typescript": "^5.5.2",
     "winston": "^3.11.0",
     "markdownlint-cli": "^0.41.0",
     "spellchecker-cli": "^6.2.0",
