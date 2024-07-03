@@ -90,7 +90,7 @@ export const run = async(
     job.main = output;
   }
   if (configuration.mode === 'verify') {
-    return validateTasks(repetitions, threads, job.main);
+    return validateTasks(repetitions, threads, job.main,);
   }
   executor(
     threads,
