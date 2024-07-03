@@ -23,7 +23,7 @@ import {
   DEFAULT_THREADS,
 } from './constants.js';
 import blacklist from './routes/blacklist.js';
-import validateTasks from "./routes/validate-tasks.js";
+import validateTasks from './routes/validate-tasks.js';
 
 // eslint-disable-next-line complexity
 export const run = async(
