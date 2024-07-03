@@ -47,6 +47,7 @@ export default async(args: string[], cwd: string,): Promise<number> => {
         language: config.language,
         cwd: config.cwd,
       })
+    break;
     case 'stress':
       console.error('NOT YET IMPLEMENTED',);
       return STATUSCODE_FAILURE;
