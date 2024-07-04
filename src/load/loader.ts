@@ -10,7 +10,7 @@ import language, {
   locale,
 } from '../helper/language.js';
 import jobCreator from '../routes/job-creator.js';
-import Config from "../config/config.js";
+import Config from '../config/config.js';
 
 // eslint-disable-next-line complexity
 const loadUp = async(config: Config,) => {

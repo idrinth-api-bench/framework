@@ -11,8 +11,7 @@ import pkg from '../../package.json' with {
 };
 import configFactory from '../config/config-factory.js';
 import storageFactory from '../storage/storage-factory.js';
-import loader from "../load/loader.js";
-import validateTasks from "../routes/validate-tasks.js";
+import loader from '../load/loader.js';
 
 // eslint-disable-next-line complexity
 export default async(args: string[], cwd: string,): Promise<number> => {
@@ -38,7 +37,7 @@ export default async(args: string[], cwd: string,): Promise<number> => {
       }, ONE, ONE,);
       break;
     case 'load':
-      await loader(config);
+      await loader(config,);
       break;
     case 'verify':
       await run({
@@ -46,8 +45,8 @@ export default async(args: string[], cwd: string,): Promise<number> => {
         taskId: config.taskId,
         language: config.language,
         cwd: config.cwd,
-      })
-    break;
+      },);
+      break;
     case 'stress':
       console.error('NOT YET IMPLEMENTED',);
       return STATUSCODE_FAILURE;

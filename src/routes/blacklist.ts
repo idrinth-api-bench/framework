@@ -5,10 +5,11 @@ import {
   existsSync,
   readFileSync,
 } from 'fs';
+import Executions from '../executions.js';
 
 export default (
   cwd: string,
-  mode: 'benchmarking'|'content-testing'|'load-testing'|'stress-testing',
+  mode: Executions,
 ): string[] => {
   const file = cwd + '/.idrinth-api-bench.yml';
   if (! existsSync(file,)) {
