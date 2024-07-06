@@ -23,6 +23,8 @@ import {
   DEFAULT_THREADS,
 } from './constants.js';
 import blacklist from './routes/blacklist.js';
+import validateTasks from './routes/validate-tasks.js';
+import Executions from './executions.js';
 
 // eslint-disable-next-line complexity
 export const run = async(
@@ -35,7 +37,7 @@ export const run = async(
     progress?: Progress,
     language?: string,
     blacklist?: string[],
-    mode?: 'benchmarking'|'content-testing'|'load-testing'|'stress-testing',
+    mode?: Executions,
     taskId?: string,
     cwd?: string,
   },
@@ -87,6 +89,10 @@ export const run = async(
       }
     }
     job.main = output;
+  }
+  if (configuration.mode === 'verify') {
+    validateTasks(repetitions, threads, job.main,);
+    return;
   }
   executor(
     threads,
