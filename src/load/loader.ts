@@ -11,6 +11,7 @@ import language, {
 } from '../helper/language.js';
 import jobCreator from '../routes/job-creator.js';
 import Config from '../config/config.js';
+import defaultReporter from '../reporter/default-reporter.js';
 
 // eslint-disable-next-line complexity
 const loadUp = async(config: Config,) => {
@@ -26,22 +27,22 @@ const loadUp = async(config: Config,) => {
   }
   const runs = {};
   const job = await jobCreator(`${ reqlib }`,);
-  let threads = config.threads;
   for (const task of job.main || []) {
+    let threads = config.threads;
     do {
       // eslint-disable-next-line no-await-in-loop
       await run({
         language: config.language,
         mode: 'load-testing',
-      }, config.threads, config.repetitions, {
+      }, threads, config.repetitions, {
         ...job,
         main: [ task, ],
       },);
       const execution = fse.readJsonSync(reqlib + '/result.json', 'utf-8',);
       let hasErrors = false;
-      for (const test of Object.keys(run,)) {
+      for (const test of Object.keys(execution,)) {
         hasErrors = hasErrors || execution[test].errors > EMPTY;
-        runs['test x' + config.threads] = execution[test];
+        runs[test + ' x' + config.threads] = execution[test];
       }
       if (hasErrors) {
         break;
@@ -49,6 +50,6 @@ const loadUp = async(config: Config,) => {
       threads += config.increment;
     } while (threads <= config.maximum);
   }
-  fse.writeJsonSync(reqlib + '/result.json', runs,);
+  defaultReporter(runs, config.cwd);
 };
 export default loadUp;
