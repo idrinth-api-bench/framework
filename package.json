@@ -2,7 +2,7 @@
   "name": "@idrinth-api-bench/framework",
   "description": "A library to benchmark apis, no matter if rest or soap",
   "license": "MIT",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "type": "module",
   "main": "index.js",
   "homepage": "https://idrinth-api-ben.ch",
@@ -105,7 +105,6 @@
     "commitlint": "commitlint --edit",
     "commitlint-ci": "commitlint --last",
     "fta": "node tools/fta.js",
-    "postinstall": "npm run simple-git-hooks",
     "simple-git-hooks": "simple-git-hooks"
   },
   "engines": {

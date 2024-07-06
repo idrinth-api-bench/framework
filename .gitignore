@@ -3,3 +3,5 @@
 /src/locales
 /coverage
 /result.*
+/src/**/*.js
+/index.js
