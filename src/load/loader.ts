@@ -4,7 +4,6 @@ import {
   DEFAULT_LANGUAGE,
 } from '../constants.js';
 import fse from 'fs-extra';
-import reqlib from 'app-root-path';
 import run from '../main.js';
 import language, {
   locale,
@@ -26,7 +25,7 @@ const loadUp = async(config: Config,) => {
     throw new Error(language('maximum_below_one',),);
   }
   const runs = {};
-  const job = await jobCreator(`${ reqlib }`,);
+  const job = await jobCreator(`${ config.cwd }`,);
   for (const task of job.main || []) {
     let threads = config.threads;
     do {
@@ -38,7 +37,7 @@ const loadUp = async(config: Config,) => {
         ...job,
         main: [ task, ],
       },);
-      const execution = fse.readJsonSync(reqlib + '/result.json', 'utf-8',);
+      const execution = fse.readJsonSync(config.cwd + '/result.json', 'utf-8',);
       let hasErrors = false;
       for (const test of Object.keys(execution,)) {
         hasErrors = hasErrors || execution[test].errors > EMPTY;
