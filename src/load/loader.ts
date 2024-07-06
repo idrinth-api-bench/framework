@@ -41,7 +41,7 @@ const loadUp = async(config: Config,) => {
       let hasErrors = false;
       for (const test of Object.keys(execution,)) {
         hasErrors = hasErrors || execution[test].errors > EMPTY;
-        runs[test + ' x' + config.threads] = execution[test];
+        runs[test + ' x' + threads] = execution[test];
       }
       if (hasErrors) {
         break;
