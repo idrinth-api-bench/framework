@@ -53,7 +53,7 @@ export const run = async(
     configuration.cwd = process.cwd();
   }
   await locale(configuration.language || DEFAULT_LANGUAGE,);
-  set(configuration.cwd);
+  set(configuration.cwd,);
   if (typeof configuration.logger === 'undefined') {
     configuration.logger = new NullLogger();
   }
