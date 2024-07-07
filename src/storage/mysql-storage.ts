@@ -4,15 +4,13 @@ import {
   createConnection,
   Connection,
 } from 'mysql2';
-import reqlib from 'app-root-path';
 import {
   MONTH_OFFSET,
   TEN,
 } from '../constants.js';
+import getLock from '../helper/root-package.js';
 
-const project: string = reqlib
-  .require('/package-lock.json',)
-  .name.replace(/[^a-z0-9\-_]/gu, '_',);
+const project: string = getLock().name.replace(/[^a-z0-9\-_]/gu, '_',);
 
 export class MysqlStorage implements Storage {
   private connection: Connection;

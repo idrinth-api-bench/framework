@@ -49,6 +49,6 @@ const loadUp = async(config: Config,) => {
       threads += config.increment;
     } while (threads <= config.maximum);
   }
-  defaultReporter(runs, config.cwd);
+  defaultReporter(runs, config.cwd,);
 };
 export default loadUp;

@@ -25,6 +25,9 @@ import {
 import blacklist from './routes/blacklist.js';
 import validateTasks from './routes/validate-tasks.js';
 import Executions from './executions.js';
+import {
+  set,
+} from './helper/root-package.js';
 
 // eslint-disable-next-line complexity
 export const run = async(
@@ -46,7 +49,11 @@ export const run = async(
   job?: Job|Array<Task>|undefined,
   // eslint-disable-next-line max-params
 ): Promise<void> => {
+  if (! configuration.cwd) {
+    configuration.cwd = process.cwd();
+  }
   await locale(configuration.language || DEFAULT_LANGUAGE,);
+  set(configuration.cwd,);
   if (typeof configuration.logger === 'undefined') {
     configuration.logger = new NullLogger();
   }
@@ -64,12 +71,12 @@ export const run = async(
   }
   if (typeof configuration.blacklist === 'undefined') {
     configuration.blacklist = blacklist(
-      process.cwd(),
+      configuration.cwd,
       configuration.mode || 'benchmarking',
     );
   }
   if (typeof job === 'undefined') {
-    job = await jobCreator(configuration.cwd || process.cwd(),);
+    job = await jobCreator(configuration.cwd,);
   } else if (typeof job === 'object' && Array.isArray(job,)) {
     job = {
       before: [],

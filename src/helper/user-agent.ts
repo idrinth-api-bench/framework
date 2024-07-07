@@ -1,11 +1,7 @@
-import reqlib from 'app-root-path';
-interface Versioned {
-  name: string;
-  version: string;
-}
-interface Lock extends Versioned{
-  packages: {[lib: string]: Versioned};
-}
+import getLock, {
+  Versioned,
+  Lock,
+} from '../helper/root-package.js';
 
 const formatVersion = (ob: Versioned,): string => {
   if (! ob) {
@@ -29,7 +25,7 @@ const getVersion = (name: string, lock: Lock,): string => {
   return '0.0';
 };
 
-const lock: Lock = reqlib.require('/package-lock.json',) as Lock;
+const lock = getLock();
 const main = `${ lock.name }/${ formatVersion(lock,) }`;
 const needle = `needle/${ getVersion('needle', lock,) }`;
 const name = '@idrinth-api-bench/framework';
