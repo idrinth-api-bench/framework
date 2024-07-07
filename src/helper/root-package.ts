@@ -16,7 +16,7 @@ let lock: Lock = undefined;
 
 export default (): Lock => {
   if (! lock) {
-    throw Error(language('missing_package_lock'));
+    set(process.cwd());
   }
   return lock;
 };
