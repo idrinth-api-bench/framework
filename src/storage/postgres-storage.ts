@@ -1,15 +1,13 @@
 import Storage from './storage.js';
 import FinishedSet from '../messaging/finished-set.js';
 import postgres from 'postgres';
-import reqlib from 'app-root-path';
+import getLock from '../helper/root-package.js';
 import {
   MONTH_OFFSET,
   TEN,
 } from '../constants.js';
 
-const project: string = reqlib
-  .require('/package-lock.json',)
-  .name.replace(/[^a-z0-9\-_]/gu, '_',);
+const project: string = getLock().name.replace(/[^a-z0-9\-_]/gu, '_',);
 
 export class PostgresStorage implements Storage {
   private connection: postgres.Sql<Record<string, unknown>>;
