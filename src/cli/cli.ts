@@ -6,12 +6,10 @@ import {
 } from '../constants.js';
 import resultStore from '../store/result-store.js';
 import run from '../main.js';
-import pkg from '../../package.json' with {
-  type: 'json',
-};
 import configFactory from '../config/config-factory.js';
 import storageFactory from '../storage/storage-factory.js';
 import loader from '../load/loader.js';
+import {readFileSync} from "fs";
 
 // eslint-disable-next-line complexity
 export default async(args: string[], cwd: string,): Promise<number> => {
@@ -51,8 +49,9 @@ export default async(args: string[], cwd: string,): Promise<number> => {
       console.error('NOT YET IMPLEMENTED',);
       return STATUSCODE_FAILURE;
     default:
+      const pkg = JSON.parse(readFileSync('../../package.json', 'utf8'));
       console.log(
-        `@idrinth/api-bench v${ pkg.version }`,
+        `@idrinth-api-bench/framework v${ pkg.version }`,
       );
       console.log(
         'iab bench --language=en --taskId=test --threads=11 --repetitions=100',
