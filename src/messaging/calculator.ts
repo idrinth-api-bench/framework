@@ -16,6 +16,7 @@ const startResults = (
   reportModifiers: ReportModifier[],
   resultHandler: Reporter,
   resultOutputDir: string,
+  resolver: {resolve(value: boolean,): void},
   // eslint-disable-next-line max-params
 ): void => {
   if (! Counter.isEmpty('active',) || ! Counter.isEmpty('analyzing',)) {
@@ -24,13 +25,16 @@ const startResults = (
   calculator.terminate();
   logger.info(language('starting_result',),);
   logger.debug(language('data',), finished,);
+  let hasErrors = false;
   for (const reportModifier of reportModifiers) {
     for (const set of Object.keys(finished,)) {
       finished[set] = reportModifier.adjust(finished[set],);
+      hasErrors = hasErrors || finished[set].errors > 0;
     }
   }
   resultHandler(finished, resultOutputDir,);
   logger.info(language('done',),);
+  resolver.resolve(hasErrors);
 };
 const onCalculate = (
   data: FinishedSet,
@@ -43,6 +47,7 @@ const onCalculate = (
   reportModifiers: ReportModifier[],
   reporter: Reporter,
   resultOutputDir: string,
+  resolver: {resolve(value: boolean,): void},
   // eslint-disable-next-line max-params
 ): void => {
   finished[data.id] = data;
@@ -57,6 +62,7 @@ const onCalculate = (
     reportModifiers,
     reporter,
     resultOutputDir,
+    resolver,
   );
 };
 export default onCalculate;

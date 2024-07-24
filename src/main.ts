@@ -48,7 +48,7 @@ export const run = async(
   repetitions = DEFAULT_REPETITIONS,
   job?: Job|Array<Task>|undefined,
   // eslint-disable-next-line max-params
-): Promise<void> => {
+): Promise<boolean> => {
   if (! configuration.cwd) {
     configuration.cwd = process.cwd();
   }
@@ -99,9 +99,9 @@ export const run = async(
   }
   if (configuration.mode === 'verify') {
     validateTasks(repetitions, threads, job.main,);
-    return;
+    return true;
   }
-  executor(
+  return executor(
     threads,
     repetitions,
     job,
