@@ -2,7 +2,8 @@
 import {
   STATUSCODE_SUCCESS,
   STATUSCODE_FAILURE,
-  ONE, FRAMEWORK_ROOT,
+  ONE,
+  FRAMEWORK_ROOT,
 } from '../constants.js';
 import resultStore from '../store/result-store.js';
 import run from '../main.js';
@@ -49,7 +50,7 @@ export default async(args: string[], cwd: string,): Promise<number> => {
       console.error('NOT YET IMPLEMENTED',);
       return STATUSCODE_FAILURE;
     default:
-      const pkg = JSON.parse(readFileSync(FRAMEWORK_ROOT + 'package.json', 'utf8'));
+      const pkg = JSON.parse(readFileSync(FRAMEWORK_ROOT + '/package.json', 'utf8'));
       console.log(
         `@idrinth-api-bench/framework v${ pkg.version }`,
       );
