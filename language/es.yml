@@ -12,8 +12,8 @@ no_after: Listo, no hay solicitudes posteriores.
 finished_requests: Finalizado de solicitar %1%.
 starting_analyzation: Comenzando análisis de %1%.
 next_request: Comenzando la siguiente solicitud.
-starting_validation: Iniciando validacion de %1%.
-end_thread: Todas las solicitudes estan listas, finalizando hilo.
+starting_validation: Iniciando validación de %1%.
+end_thread: Todas las solicitudes están listas, finalizando hilo.
 after_done: Después de finalizado.
 no_response_status: La respuesta no contiene estado
 response_status_above_2xx: La respuesta retornó un estado arriba del rango 200-299
@@ -27,3 +27,19 @@ invalid_json_body: El cuerpo del JSON body es inválido. %1%
 no_xml_content_type: El content-type %1% no es */xml.
 invalid_xml_body: El cuerpo XML es inválido.
 too_slow: El tiempo de respuesta fue superior a %1% ns.
+maximum_below_threads: El máximo es inferior al número de hilos inicial.
+increment_below_one: Necesitas incrementar tus hilos en cada iteración, actualmente el incremento está por debajo de uno.
+maximum_below_one: No se puede fijar el máximo por debajo de uno
+server_header_is_set: El servidor de cabecera está configurado. Elimínelo para mejorar la seguridad.
+powered_by_is_set: La cabecera X-Powered-By está configurada. Se comparte información crítica con el mundo.
+validation_errors: Se han encontrado %1% errores.There were %1% errors encountered.
+validation_warnings: Se encontraron %1% advertencias.
+invalid_pre_definition: La definición de pre en la ruta %1% no es válida.
+invalid_post_definition: La definición de puesto en la ruta %1% no es válida.
+unknown_route_property: La propiedad %1% en la ruta %1% es desconocida.
+invalid_request_property: La propiedad de solicitud %2% de la tarea %1% no es válida.
+invalid_request: La tarea de solicitud %1% tiene propiedades desconocidas.
+response_not_success: 'La respuesta no ha sido satisfactoria, el campo %1% era %2%.'
+response_not_failure: 'La respuesta no falló, el campo %1% era %2%'
+no_errors_warnings: No se han encontrado errores ni advertencias.
+missing_package_lock: No se puede encontrar un package-lock.json.
