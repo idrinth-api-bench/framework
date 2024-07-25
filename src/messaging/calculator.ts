@@ -8,6 +8,7 @@ import Thread from '../worker/thread.js';
 import Counter from '../helper/counter.js';
 import ReportModifier from '../report-modifier/report-modifier.js';
 import Reporter from '../reporter/reporter.js';
+import {CLOSE_WAIT_TIMEOUT} from "../constants.js";
 
 const startResults = (
   logger: Logger,
@@ -34,7 +35,7 @@ const startResults = (
   }
   resultHandler(finished, resultOutputDir,);
   logger.info(language('done',),);
-  resolver.resolve(hasErrors);
+  setTimeout(() => resolver.resolve(hasErrors), CLOSE_WAIT_TIMEOUT,);
 };
 const onCalculate = (
   data: FinishedSet,

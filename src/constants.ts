@@ -53,4 +53,4 @@ export const TEMP_DIR = process.env.RUNNER_TEMP ?? tmpdir();
 export const INCLUDE_EXTENSION = existsSync(
   fileURLToPath(new URL('.', import.meta.url)) + '../index.js'
 ) ? '.js' : '.ts';
-
+export const CLOSE_WAIT_TIMEOUT = 3333;
