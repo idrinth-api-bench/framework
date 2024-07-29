@@ -3,9 +3,11 @@ import {
   expect,
 } from 'chai';
 import 'mocha';
+import url from 'url';
 import {
   sep,
 } from 'path';
+const __dirname = url.fileURLToPath(new URL('.', import.meta.url,),);
 
 describe('helper/middleware-loader', () => {
   it('should be a function', () => {
