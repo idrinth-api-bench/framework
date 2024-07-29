@@ -5,3 +5,6 @@
 /result.*
 /src/**/*.js
 /index.js
+
+# stryker temp files
+.stryker-tmp
