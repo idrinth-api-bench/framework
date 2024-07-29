@@ -7,9 +7,17 @@
     "clear-text",
     "progress"
   ],
-  "testRunner": "command",
-  "commandRunner": {
-    "command": "npm test && npm run integration && npm run property"
+  "testRunner": "mocha",
+  "mochaOptions": {
+    "spec": [
+      "test/**/*.ts",
+      "integration/**/*.ts",
+      "property/**/*.ts"
+    ]
   },
+  "testRunnerNodeArgs": [
+    "--experimental-specifier-resolution=node",
+    "--loader=ts-node/esm"
+  ],
   "coverageAnalysis": "perTest"
 }
