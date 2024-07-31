@@ -118,6 +118,7 @@ jobs:
             package-lock.json
       - run: npm ci
       - run: npm run language
+      - run: sed -i 's/testFileNames\.forEach/testFileNames\.files\.forEach/' node_modules/@stryker-mutator/mocha-runner/dist/src/mocha-test-runner.js
       - run: npm run mutation
   end:
     runs-on: ubuntu-latest
