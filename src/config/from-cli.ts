@@ -15,7 +15,7 @@ export default (config: Config, args: string[],) => {
   for (const option of options) {
     const parts = option.split('=',);
     if (parts.length === TWO) {
-      config[parts[FIRST]] = toValue(parts[SECOND],);
+      config[parts[FIRST].substring(TWO,)] = toValue(parts[SECOND],);
     }
   }
 };
