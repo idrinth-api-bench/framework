@@ -5,7 +5,6 @@ import {
   ONE,
   FRAMEWORK_ROOT,
 } from '../constants.js';
-import resultStore from '../store/result-store.js';
 import run from '../main.js';
 import configFactory from '../config/config-factory.js';
 import storageFactory from '../storage/storage-factory.js';
@@ -15,37 +14,32 @@ import {readFileSync} from "fs";
 // eslint-disable-next-line complexity
 export default async(args: string[], cwd: string,): Promise<number> => {
   const config = configFactory(cwd, args, process.env,);
-  resultStore.set(false,);
   const storage = storageFactory(config,);
   switch (config.task) {
     case 'bench':
-      await run({
+      return await run({
         mode: 'benchmarking',
         taskId: config.taskId,
         language: config.language,
         cwd: config.cwd,
         resultStorage: storage,
-      }, config.threads, config.repetitions,);
-      break;
+      }, config.threads, config.repetitions,) ? STATUSCODE_SUCCESS : STATUSCODE_FAILURE;
     case 'content':
-      await run({
+      return await run({
         mode: 'content-testing',
         taskId: config.taskId,
         language: config.language,
         cwd: config.cwd,
-      }, ONE, ONE,);
-      break;
+      }, ONE, ONE,) ? STATUSCODE_SUCCESS : STATUSCODE_FAILURE;
     case 'load':
-      await loader(config,);
-      break;
+      return await loader(config,) ? STATUSCODE_SUCCESS : STATUSCODE_FAILURE;
     case 'verify':
-      await run({
+      return await run({
         mode: 'verify',
         taskId: config.taskId,
         language: config.language,
         cwd: config.cwd,
-      },);
-      break;
+      },) ? STATUSCODE_SUCCESS : STATUSCODE_FAILURE;
     case 'stress':
       console.error('NOT YET IMPLEMENTED',);
       return STATUSCODE_FAILURE;
@@ -73,5 +67,4 @@ export default async(args: string[], cwd: string,): Promise<number> => {
       );
       return STATUSCODE_SUCCESS;
   }
-  return resultStore.get(false,) ? STATUSCODE_SUCCESS : STATUSCODE_FAILURE;
 };

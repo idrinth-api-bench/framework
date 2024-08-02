@@ -24,7 +24,7 @@ import Task from './routes/task.js';
 import buildTaskList from './routes/build-task-list.js';
 
 /* eslint max-params:0 */
-const executor = (
+const executor = async(
   threads: number,
   repetitions: number,
   job: Job,
@@ -36,10 +36,13 @@ const executor = (
   resultOutputDir: string,
   progress: Progress,
   blacklist: string[],
-): void => {
+): Promise<boolean> => {
+  validateTasks(repetitions, threads, job.main,);
+  const resolver = {
+    resolve(value: boolean) {}
+  };
   const total = threads*repetitions;
   const now = new Date();
-  validateTasks(repetitions, threads, job.main,);
   const results: {[z: string]: ResultSet} = {};
   const finished: {[z: string]: FinishedSet} = {};
   logger.debug(
@@ -61,6 +64,7 @@ const executor = (
       reportModifiers,
       resultHandler,
       resultOutputDir,
+      resolver,
     ),
   );
   const after = buildWorker(
@@ -114,6 +118,9 @@ const executor = (
     before.terminate();
     startMain();
   }
+  return new Promise(resolve => {
+    resolver.resolve = resolve;
+  });
 };
 
 export default executor;

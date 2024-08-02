@@ -1,5 +1,5 @@
 import Worker from 'worker_threads';
-import worker from '../src/worker/calculator.ts';
+import worker from '../src/worker/calculator.js';
 
 Worker.parentPort.on(
   'message',
