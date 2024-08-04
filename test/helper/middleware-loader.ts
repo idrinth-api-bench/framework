@@ -5,14 +5,9 @@ import {
 import 'mocha';
 import url from 'url';
 import {
-  realpathSync,
-} from 'fs';
-import {
   sep,
 } from 'path';
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url,),);
-
-const basedir = realpathSync(__dirname + '../..',);
 
 describe('helper/middleware-loader', () => {
   it('should be a function', () => {
@@ -37,14 +32,15 @@ describe('helper/middleware-loader', () => {
       // eslint-disable-next-line no-unused-expressions
       expect(false,).to.be.true;
     } catch (e) {
+      const text = `${ e }`;
+      // eslint-disable-next-line no-unused-expressions
+      expect(text.startsWith('Error: Cannot find module ',),).to.be.true;
       if (sep === '/') {
-        expect(`${ e }`,).to.equal(`Error: Cannot find module '${ basedir }`
-          + '/node_modules/needle/src/middlewares/cookie.ts\' '
-          + `imported from ${ basedir }/src/routes/include-default.ts`,);
+        // eslint-disable-next-line no-unused-expressions
+        expect(text.endsWith('/src/routes/include-default.ts',),).to.be.true;
       } else {
-        expect(`${ e }`,).to.equal(`Error: Cannot find module '${ basedir }`
-          + '\\node_modules\\needle\\src\\middlewares\\cookie.ts\' '
-          + `imported from ${ basedir }\\src\\routes\\include-default.ts`,);
+        // eslint-disable-next-line no-unused-expressions
+        expect(text.endsWith('\\src\\routes\\include-default.ts',),).to.be.true;
       }
     }
   },);

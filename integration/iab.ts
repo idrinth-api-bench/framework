@@ -5,6 +5,7 @@ import {
 import 'mocha';
 import {
   spawn,
+  ChildProcess,
 } from 'child_process';
 import url from 'url';
 import Counter from '../src/helper/counter';
@@ -22,8 +23,9 @@ const WAIT_DELAY = 2500;
 const SETUP_TIMEOUT = 10000;
 
 describe('iab-cli', function() {
+  let server: ChildProcess;
   before(() => {
-    spawn('node', [
+    server = spawn('node', [
       __dirname + '../fixtures/server.cjs',
       '48912',
     ],);
@@ -31,6 +33,7 @@ describe('iab-cli', function() {
   },);
   after(() => {
     Counter.clear();
+    server.kill();
   },);
   beforeEach(() => {
     prepareTempDir();

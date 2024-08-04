@@ -12,7 +12,7 @@ const include = async(
   path = path
     .replace(/\/\//ug, '/',)
     .replace(/\.ts$/u, INCLUDE_EXTENSION,);
-  const val = (await import('file://' + path,))[part];
+  const val = (await import('file://' + path))[part];
   if (typeof val === 'undefined') {
     throw new Error(language('impossible_include', path, part,),);
   }
