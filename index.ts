@@ -58,8 +58,6 @@ import {
 import {
   run as r,
 } from './src/main.js';
-import rS from './src/store/result-store.js';
-import iR from './src/reporter/internal-reporter.js';
 
 export type Reporter = R;
 export const CliReporter = CliR;
@@ -80,7 +78,5 @@ export const MssqlStorage = MSSQLS;
 export const PostgresStorage = PGSQL;
 export type Job = J;
 export type Task = T;
-export const internalReporter = iR;
-export const resultStore = rS;
 export const run = r;
 export default r;

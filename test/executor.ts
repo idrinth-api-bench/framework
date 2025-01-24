@@ -149,9 +149,9 @@ describe('executor', () => {
   it('should be a function', () => {
     expect(executor,).to.be.a('function',);
   },);
-  it('should not try to execute no tasks(0 tasks)', () => {
-    expect(
-      () => executor(
+  it('should not try to execute no tasks(0 tasks)', async() => {
+    try {
+    await executor(
         threads,
         repeats,
         noJob,
@@ -162,12 +162,16 @@ describe('executor', () => {
         new NoopStorage(),
         '/executor',
         new NoProgress(),
-      ),
-    ).to.throw('Can\'t measure zero tasks.',);
+      );
+    } catch (E) {
+      expect(`${E}`).to.be.equal('Error: Can\'t measure zero tasks.');
+      return;
+    }
+    expect(false).to.be.true;
   },);
-  it('should not try to execute no tasks(0 threads)', () => {
-    expect(
-      () => executor(
+  it('should not try to execute no tasks(0 threads)', async() => {
+    try {
+      await executor(
         NONE,
         repeats,
         job,
@@ -178,12 +182,16 @@ describe('executor', () => {
         new NoopStorage(),
         '/executor',
         new NoProgress(),
-      ),
-    ).to.throw('Can\'t measure zero tasks.',);
+      );
+    } catch (E) {
+      expect(`${E}`,).to.equal('Error: Can\'t measure zero tasks.',);
+      return;
+    }
+    expect(false).to.be.true;
   },);
-  it('should not try to execute no tasks (0 repeats)', () => {
-    expect(
-      () => executor(
+  it('should not try to execute no tasks (0 repeats)', async() => {
+    try {
+      const r = await executor(
         threads,
         NONE,
         job,
@@ -194,7 +202,11 @@ describe('executor', () => {
         new NoopStorage(),
         '/executor',
         new NoProgress(),
-      ),
-    ).to.throw('Can\'t measure zero tasks.',);
+      );
+    } catch (E) {
+      expect(`${E}`).to.equal('Error: Can\'t measure zero tasks.',);
+      return;
+    }
+    expect(false).to.be.true;
   },);
 },);
