@@ -23,7 +23,8 @@
     "src/logger/logger.ts",
     "src/helper/static-implements.ts",
     "src/open-api/open-api.ts",
-    "src/result-map.ts"
+    "src/result-map.ts",
+    "src/locales/*.ts"
   ],
   "include": ["src/**/*.ts"]
 }

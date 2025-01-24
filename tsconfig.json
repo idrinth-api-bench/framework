@@ -13,7 +13,8 @@
   ],
   "include": [
     "src/**/*.ts",
-    "index.ts"
+    "index.ts",
+    ".stryker-tmp/**/*.ts"
   ],
   "ts-node": {
     "transpileOnly": true

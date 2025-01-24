@@ -37,7 +37,7 @@ export const locale = async(lang: string,) => {
   chosen = en;
   if (languages.includes(lang,)) {
     language = lang;
-    chosen = (await import(`../locales/${ language }.js`,)).default;
+    chosen = (await import(`../locales/${ language }.js`)).default;
   }
 };
 

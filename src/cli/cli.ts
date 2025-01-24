@@ -9,10 +9,19 @@ import run from '../main.js';
 import configFactory from '../config/config-factory.js';
 import storageFactory from '../storage/storage-factory.js';
 import loader from '../load/loader.js';
-import {readFileSync} from "fs";
+import {
+  readFileSync,
+} from 'fs';
 
 // eslint-disable-next-line complexity
 export default async(args: string[], cwd: string,): Promise<number> => {
+  const pkg = JSON.parse(readFileSync(
+    FRAMEWORK_ROOT + '/package.json',
+    'utf8',
+  ),);
+  console.log(
+    `@idrinth-api-bench/framework v${ pkg.version }`,
+  );
   const config = configFactory(cwd, args, process.env,);
   const storage = storageFactory(config,);
   switch (config.task) {
@@ -44,10 +53,6 @@ export default async(args: string[], cwd: string,): Promise<number> => {
       console.error('NOT YET IMPLEMENTED',);
       return STATUSCODE_FAILURE;
     default:
-      const pkg = JSON.parse(readFileSync(FRAMEWORK_ROOT + '/package.json', 'utf8'));
-      console.log(
-        `@idrinth-api-bench/framework v${ pkg.version }`,
-      );
       console.log(
         'iab bench --language=en --taskId=test --threads=11 --repetitions=100',
       );
