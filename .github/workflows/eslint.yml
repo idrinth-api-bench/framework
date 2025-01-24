@@ -1,4 +1,4 @@
-name: framework ESLINT
+name: ESLINT
 on:
   push:
     branches:
