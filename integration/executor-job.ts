@@ -1,27 +1,27 @@
 import mock from 'mock-fs';
-import executor from '../src/executor';
-import Thread from '../src/worker/thread';
+import executor from '../src/executor.js';
+import Thread from '../src/worker/thread.js';
 import {
   expect,
 } from 'chai';
 import 'mocha';
-import NullLogger from '../src/logger/null-logger';
-import Result from '../src/messaging/result';
-import FinishedSet from '../src/messaging/finished-set';
-import Task from '../src/routes/task';
-import ValidationResult from '../src/messaging/validation-result';
+import NullLogger from '../src/logger/null-logger.js';
+import Result from '../src/messaging/result.js';
+import FinishedSet from '../src/messaging/finished-set.js';
+import Task from '../src/routes/task.js';
+import ValidationResult from '../src/messaging/validation-result.js';
 import {
   realpathSync,
 } from 'fs';
-import Job from '../src/routes/job';
-import NoopStorage from '../src/storage/noop-storage';
+import Job from '../src/routes/job.js';
+import NoopStorage from '../src/storage/noop-storage.js';
 import makeConsoleMock from 'consolemock';
-import NoProgress from '../src/progress/no-progress';
-import Counter from '../src/helper/counter';
+import NoProgress from '../src/progress/no-progress.js';
+import Counter from '../src/helper/counter.js';
 import {
   TEMP_DIR,
-} from '../src/constants';
-import prepareTempDir from './prepare-temp-dir';
+} from '../src/constants.js';
+import prepareTempDir from './prepare-temp-dir.js';
 
 const NONE = 0;
 const SETUP_TIMEOUT = 10000;
@@ -56,6 +56,8 @@ class FakeResult implements Result, ValidationResult, FinishedSet {
 
   public stdv100: number;
 
+  public maxDuration: number;
+
   public response = {
     headers: {},
     cookies: {},
@@ -66,7 +68,7 @@ class FakeResult implements Result, ValidationResult, FinishedSet {
 
   public validators = [];
 
-  public durations;
+  public durations: number[];
 
   public msgs = {};
 
