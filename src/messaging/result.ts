@@ -25,6 +25,7 @@ export class Result {
     response: NeedleResponse,
     public validators: Array<string>,
     public maxDuration: number|undefined,
+    public middlewares: Array<string>,
   ) {
     this.duration = (end.shift() - start.shift()) * ToMicro;
     this.duration += end.pop() - start.pop();

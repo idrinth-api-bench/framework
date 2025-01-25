@@ -12,16 +12,22 @@ export class ResultSet {
 
   public msgs: {[msg: string]: number};
 
+  public middlewares: Array<string>;
+
   public constructor(public readonly id: string,) {
     this.errors = INITIAL_ZERO;
     this.count = INITIAL_ZERO;
     this.durations = [];
     this.msgs = {};
+    this.middlewares = [];
   }
 
   public add(result: ValidationResult,): void {
     if (result.duration !== null) {
       this.durations.push(result.duration,);
+    }
+    if (this.middlewares.length === 0) {
+      this.middlewares = result.middlewares;
     }
     this.count ++;
     if (! result.success) {

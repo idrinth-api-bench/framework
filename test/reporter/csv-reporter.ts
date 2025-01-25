@@ -1,5 +1,5 @@
 import mock = require('mock-fs');
-import csvReporter from '../../src/reporter/csv-reporter';
+import csvReporter from '../../src/reporter/csv-reporter.js';
 import {
   expect,
 } from 'chai';
@@ -40,6 +40,10 @@ describe('reporter/csv-reporter', () => {
         max80: 99,
         stdv100: 9,
         stdv80: 8,
+        middlewares: ['hi'],
+        msgs: {
+          'hi': 98,
+        },
       },
     };
     csvReporter(results, '/csv1',);
@@ -66,14 +70,18 @@ describe('reporter/csv-reporter', () => {
         max80: 99,
         stdv100: 9,
         stdv80: 8,
+        middlewares: ['done'],
+        msgs: {
+          'hi': 89,
+        },
       },
     };
     csvReporter(results, '/csv2',);
     setTimeout(() => {
       expect(readFileSync(file,) + '',).to.equal(
         'id,errors,count,avg100,median100,min100,'
-        + 'max100,avg80,median80,min80,max80,stdv100,stdv80,msgs'
-        + '\n1,14,7,6,33,1,99,76,33,14,99,9,8,',
+        + 'max100,avg80,median80,min80,max80,stdv100,stdv80,middlewares,msgs'
+        + '\n1,14,7,6,33,1,99,76,33,14,99,9,8,done,"{""hi"":89}"',
       );
       done();
     }, WAIT_TIME,);

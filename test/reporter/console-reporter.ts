@@ -1,5 +1,5 @@
 import makeConsoleMock from 'consolemock';
-import consoleReporter from '../../src/reporter/console-reporter';
+import consoleReporter from '../../src/reporter/console-reporter.js';
 import {
   expect,
 } from 'chai';
@@ -31,6 +31,7 @@ describe('reporter/console-reporter', () => {
         max80: 99,
         stdv80: 12,
         stdv100: 99,
+        middlewares: ['test', 'rest']
       },
     };
     expect(() => consoleReporter(results, '',),).to.not.throw();

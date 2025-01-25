@@ -13,6 +13,7 @@ export interface FinishedSet {
   min80: number;
   max80: number;
   msgs?: {[msg: string]: number};
+  middlewares?: string[];
 }
 
 export default FinishedSet;

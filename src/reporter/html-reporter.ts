@@ -33,6 +33,7 @@ const html: Reporter = (
   stream.write('<th>Standard Deviation 80%</th>',);
   stream.write('<th>Standard Deviation 100%</th>',);
   stream.write('<th>Messages</th>',);
+  stream.write('<th>Middlewares</th>',);
   stream.write('</tr>',);
   stream.write('</thead>',);
   stream.write('<tbody>',);
@@ -52,6 +53,7 @@ const html: Reporter = (
     stream.write('<td>' + results[id].stdv80 + '</td>',);
     stream.write('<td>' + results[id].stdv100 + '</td>',);
     stream.write('<td>' + JSON.stringify(results[id].msgs,) + '</td>',);
+    stream.write('<td>' + results[id].middlewares.join() + '</td>',);
     stream.write('</tr>',);
   }
   stream.write('</tbody>',);
