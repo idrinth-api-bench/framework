@@ -58,7 +58,7 @@ const onWorker = (
   results: {[z: string]: ResultSet},
   total: number,
   calculator: Thread,
-  internalTasks: Task[],
+  internalTasks: Generator<Task>,
   worker: Thread,
   after: Thread,
   job: Job,
@@ -69,9 +69,10 @@ const onWorker = (
   results[data.id].add(data,);
   progress.increment();
   startAnalyzing(data.id, total, logger, calculator, results,);
-  if (internalTasks.length > EMPTY) {
+  let next: Task|undefined = internalTasks.next().value;
+  if (next) {
     logger.debug(language('next_request',),);
-    worker.postMessage(internalTasks.shift(),);
+    worker.postMessage(next,);
     return;
   }
   Counter.decrement('active',);

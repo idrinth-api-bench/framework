@@ -20,7 +20,6 @@ import Thread from './worker/thread.js';
 import {
   EMPTY,
 } from './constants.js';
-import Task from './routes/task.js';
 import buildTaskList from './routes/build-task-list.js';
 
 /* eslint max-params:0 */
@@ -48,7 +47,7 @@ const executor = async(
   logger.debug(
     language('initialization', `${ repetitions }`, `${ threads }`,),
   );
-  const internalTasks: Task[] = buildTaskList(job.main, blacklist, total,);
+  const internalTasks = buildTaskList(job.main, blacklist, total,);
   progress.start(job, repetitions, threads,);
   const calculator = buildWorker(
     Worker,
@@ -97,7 +96,7 @@ const executor = async(
         ),
       );
       Counter.increment('active',);
-      worker.postMessage(internalTasks.shift(),);
+      worker.postMessage(internalTasks.next().value,);
     }
   };
   const before = buildWorker(
