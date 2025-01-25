@@ -89,8 +89,8 @@
     "iab": "bin/iab.js"
   },
   "scripts": {
-    "lint": "eslint . --ext .js,.ts,.cjs,.json,.tsx --report-unused-disable-directives --max-warnings 0",
-    "lint-fix": "eslint --fix . --ext .js,.ts,.cjs,.json",
+    "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
+    "lint-fix": "eslint --fix .",
     "lint-md": "markdownlint *.md",
     "test": "c8 mocha test",
     "integration": "c8 mocha integration",
@@ -110,7 +110,7 @@
     "mutation": "stryker run"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   },
   "engineStrict": true
 }
