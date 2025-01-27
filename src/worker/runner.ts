@@ -96,7 +96,7 @@ export default async(task: Task, callable: Callback,): Promise<void> => {
         task.main.maxDuration,
         [
           ...task.pre.map((value,) => `pre:${value}`),
-          ...task.post.map((value,) => `pre:${value}`)
+          ...task.post.map((value,) => `post:${value}`)
         ],
       );
       if (await handlePost(task, httpResult, callable,)) {
