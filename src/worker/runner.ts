@@ -81,7 +81,7 @@ export default async(task: Task, callable: Callback,): Promise<void> => {
           maxDuration: undefined,
           middlewares: [
             ...task.pre.map((value,) => `pre:${value}`),
-            ...task.post.map((value,) => `pre:${value}`)
+            ...task.post.map((value,) => `post:${value}`)
           ],
         } as Result, error+'', false,),);
         return;

@@ -40,7 +40,7 @@ describe('reporter/json-reporter', () => {
         max80: 99,
         stdv80: 99,
         stdv100: 99,
-        middlewared: ['hello', 'worlds']
+        middlewares: ['hello', 'worlds']
       },
     };
     jsonReporter(results, '/json1',);
@@ -67,7 +67,7 @@ describe('reporter/json-reporter', () => {
         max80: 99,
         stdv80: 99,
         stdv100: 99,
-        middlewared: ['hello', 'world']
+        middlewares: ['hello', 'world']
       },
     };
     jsonReporter(results, '/json2',);

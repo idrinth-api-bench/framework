@@ -72,6 +72,6 @@ export default (result: ResultSet,): FinishedSet => {
     median80: calculateAverage(min80, max80,),
     min80,
     max80,
-    middlewares: result.middlewares,
+    middlewares: result.middlewares ?? [],
   };
 };
