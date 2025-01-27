@@ -53,7 +53,7 @@ const html: Reporter = (
     stream.write('<td>' + results[id].stdv80 + '</td>',);
     stream.write('<td>' + results[id].stdv100 + '</td>',);
     stream.write('<td>' + JSON.stringify(results[id].msgs,) + '</td>',);
-    stream.write('<td>' + results[id].middlewares.join() + '</td>',);
+    stream.write('<td>' + (results[id]?.middlewares?.join() ?? '') + '</td>',);
     stream.write('</tr>',);
   }
   stream.write('</tbody>',);

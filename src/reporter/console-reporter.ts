@@ -38,7 +38,7 @@ const cli: Reporter = (
       formatter.format(results[id].min100,),
       formatter.format(results[id].max100,),
       formatter.format(results[id].stdv100,),
-      results[id].middlewares.join(', '),
+      results[id]?.middlewares?.join() ?? '',
     ],);
   }
   // eslint-disable-next-line no-console

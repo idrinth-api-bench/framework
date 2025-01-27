@@ -21,7 +21,7 @@ const csv: Reporter = (
     csvStream.write({
       ...results[id],
       msgs: JSON.stringify(results[id].msgs,),
-      middlewares: results[id].middlewares.join(),
+      middlewares: results[id]?.middlewares?.join() ?? '',
     },);
   }
   csvStream.end();
