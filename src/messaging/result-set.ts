@@ -27,7 +27,7 @@ export class ResultSet {
       this.durations.push(result.duration,);
     }
     if (this.middlewares.length === 0) {
-      this.middlewares = result.middlewares;
+      this.middlewares = result.middlewares ?? [];
     }
     this.count ++;
     if (! result.success) {
