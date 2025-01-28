@@ -20,12 +20,8 @@ const cli: Reporter = (
       'median 100%',
       'min 100%',
       'max 100%',
-      'avg 80%',
-      'median 80%',
-      'min 80%',
-      'max 80%',
-      'stdv 80%',
       'stdv 100%',
+      'Middlewares'
     ],
   },);
   const formatter = new Intl.NumberFormat();
@@ -41,12 +37,8 @@ const cli: Reporter = (
       formatter.format(results[id].median100,),
       formatter.format(results[id].min100,),
       formatter.format(results[id].max100,),
-      formatter.format(results[id].avg80,),
-      formatter.format(results[id].median80,),
-      formatter.format(results[id].min80,),
-      formatter.format(results[id].max80,),
-      formatter.format(results[id].stdv80,),
       formatter.format(results[id].stdv100,),
+      results[id]?.middlewares?.join() ?? '',
     ],);
   }
   // eslint-disable-next-line no-console

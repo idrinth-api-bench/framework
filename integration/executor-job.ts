@@ -58,6 +58,8 @@ class FakeResult implements Result, ValidationResult, FinishedSet {
 
   public maxDuration: number;
 
+  public middlewares: string[];
+
   public response = {
     headers: {},
     cookies: {},
@@ -91,6 +93,7 @@ class FakeResult implements Result, ValidationResult, FinishedSet {
     this.median80 = duration;
     this.stdv100 = 100;
     this.stdv80 = 80;
+    this.middlewares = ['id', 'duration'];
   }
 
   public add() {

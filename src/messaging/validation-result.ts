@@ -3,6 +3,7 @@ export interface ValidationResult {
   id: string;
   success: boolean;
   msg?: string;
+  middlewares: Array<string>,
 }
 
 export default ValidationResult;

@@ -1,5 +1,5 @@
 import mock = require('mock-fs');
-import multiReporter from '../../src/reporter/multi-reporter';
+import multiReporter from '../../src/reporter/multi-reporter.js';
 import {
   expect,
 } from 'chai';
@@ -36,6 +36,7 @@ describe('reporter/multi-reporter', () => {
         max80: 99,
         stdv80: 99,
         stdv100: 99,
+        middlewares: ['hello'],
       },
     };
     let wasExecuted = false;

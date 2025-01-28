@@ -41,6 +41,7 @@ export default (result: ResultSet,): FinishedSet => {
       median80: NaN,
       min80: NaN,
       max80: NaN,
+      middlewares: result.middlewares,
     };
   }
   const sorted100 = result.durations.sort((a: number, b: number,) => a-b,);
@@ -71,5 +72,6 @@ export default (result: ResultSet,): FinishedSet => {
     median80: calculateAverage(min80, max80,),
     min80,
     max80,
+    middlewares: result.middlewares ?? [],
   };
 };

@@ -1,10 +1,10 @@
 /* eslint no-magic-numbers:0 */
-import calculator from '../../src/worker/calculator';
+import calculator from '../../src/worker/calculator.js';
 import {
   expect,
 } from 'chai';
 import 'mocha';
-import ValidationResult from '../../src/messaging/validation-result';
+import ValidationResult from '../../src/messaging/validation-result.js';
 
 describe('worker/calculator', () => {
   it('should be a function', () => {
@@ -19,12 +19,14 @@ describe('worker/calculator', () => {
       id: '##',
       errors: 5,
       durations: [],
+      middlewares: [],
       count: 9,
     },),).to.deep.equal({
       id: '##',
       errors: 5,
       msgs: {},
       count: 9,
+      middlewares: [],
       avg100: NaN,
       median100: NaN,
       min100: NaN,
@@ -44,6 +46,7 @@ describe('worker/calculator', () => {
       },
       id: '#1',
       errors: 5,
+      middlewares: [],
       msgs: {
         some: 5,
       },
@@ -61,6 +64,7 @@ describe('worker/calculator', () => {
         some: 5,
       },
       count: 9,
+      middlewares: [],
       avg100: 3,
       median100: 3,
       min100: 1,
@@ -83,6 +87,7 @@ describe('worker/calculator', () => {
       msgs: {
         some: 5,
       },
+      middlewares: [],
       durations: [
         1,
         2,
@@ -107,6 +112,7 @@ describe('worker/calculator', () => {
       msgs: {
         some: 5,
       },
+      middlewares: [],
       count: 15,
       avg100: 30,
       median100: 172,

@@ -1,5 +1,5 @@
 import mock = require('mock-fs');
-import jsonReporter from '../../src/reporter/json-reporter';
+import jsonReporter from '../../src/reporter/json-reporter.js';
 import {
   expect,
 } from 'chai';
@@ -40,6 +40,7 @@ describe('reporter/json-reporter', () => {
         max80: 99,
         stdv80: 99,
         stdv100: 99,
+        middlewares: ['hello', 'worlds']
       },
     };
     jsonReporter(results, '/json1',);
@@ -66,6 +67,7 @@ describe('reporter/json-reporter', () => {
         max80: 99,
         stdv80: 99,
         stdv100: 99,
+        middlewares: ['hello', 'world']
       },
     };
     jsonReporter(results, '/json2',);

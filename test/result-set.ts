@@ -1,5 +1,5 @@
 /* eslint no-magic-numbers:0 */
-import ResultSet from '../src/messaging/result-set';
+import ResultSet from '../src/messaging/result-set.js';
 import {
   expect,
 } from 'chai';
@@ -39,6 +39,7 @@ describe('ResultSet', () => {
       duration: 666,
       success: false,
       msg: 'Not enough programmers.',
+      middlewares: ['hello', 'worlds']
     },);
 
     expect(result.errors,).to.equal(1,);
@@ -46,6 +47,7 @@ describe('ResultSet', () => {
     expect(result.msgs,).to.deep.equal({
       'Not enough programmers.': 1,
     },);
+    expect(result.middlewares,).to.deep.equal(['hello', 'worlds']);
     expect(result.durations,).to.deep.equal([ 666, ],);
   },);
   it('using add should increase values appropriatly', () => {
@@ -53,6 +55,10 @@ describe('ResultSet', () => {
       id: 'any',
       duration: null,
       success: true,
+      middlewares: [
+        'hello',
+        'world',
+      ],
     },);
 
     expect(result.errors,).to.equal(1,);
@@ -60,6 +66,7 @@ describe('ResultSet', () => {
     expect(result.msgs,).to.deep.equal({
       'Not enough programmers.': 1,
     },);
+    expect(result.middlewares,).to.deep.equal(['hello', 'worlds']);
     expect(result.durations,).to.deep.equal([ 666, ],);
   },);
 },);

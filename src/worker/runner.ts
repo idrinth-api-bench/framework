@@ -79,6 +79,10 @@ export default async(task: Task, callable: Callback,): Promise<void> => {
           validators: [],
           // eslint-disable-next-line no-undefined
           maxDuration: undefined,
+          middlewares: [
+            ...(task.pre?.map((value,) => `pre:${value}`) ?? []),
+            ...(task.post?.map((value,) => `post:${value}`) ?? [])
+          ],
         } as Result, error+'', false,),);
         return;
       }
@@ -90,6 +94,10 @@ export default async(task: Task, callable: Callback,): Promise<void> => {
         result,
         task.post || [],
         task.main.maxDuration,
+        [
+          ...(task.pre?.map((value,) => `pre:${value}`) ?? []),
+          ...(task.post?.map((value,) => `post:${value}`) ?? [])
+        ],
       );
       if (await handlePost(task, httpResult, callable,)) {
         callable(buildAnswer(httpResult, '', true,),);
