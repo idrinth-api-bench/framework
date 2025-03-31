@@ -71,7 +71,7 @@
     "chai": "^5.1.1",
     "consolemock": "^1.1.0",
     "eslint": "^9.0.0",
-    "fast-check": "^3.19.0",
+    "fast-check": "^4.0.1",
     "mocha": "^11.1.0",
     "mock-fs": "^5.2.0",
     "pino": "^9.2.0",
